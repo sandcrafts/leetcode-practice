@@ -47,19 +47,23 @@
  *
  * Follow up: Can you come up with an algorithm that runs in O(m + n) time?
  */
-class Solution {
-
+class Solution
+{
     /**
      * @return NULL
      */
-    function merge(&$nums1, $m, $nums2, $n) 
+    function merge(&$nums1, $m, $nums2, $n)
     {
-        $validNums1 = array_slice($nums1, 0, $m);
-        $validNums2 = array_slice($nums2, 0, $n);
-        $mergedArray = array_merge($validNums1, $validNums2);
+        $mergedArray = array_merge($nums1, $nums2);
 
-        sort($mergedArray);
+        foreach ($mergedArray as $mergedArrayItem) {
+            if (!$mergedArrayItem == 0) {
+                $mergedNonEmptyArray[] = $mergedArrayItem;
+            }
+        }
 
-        $nums1 = $mergedArray;
+        sort($mergedNonEmptyArray);
+
+        $nums1 = $mergedNonEmptyArray;
     }
 }
