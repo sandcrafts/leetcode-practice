@@ -2,7 +2,6 @@
 
 class Program
 {
-
     static void Main()
     {
         // initialize variables - graded assignments 
