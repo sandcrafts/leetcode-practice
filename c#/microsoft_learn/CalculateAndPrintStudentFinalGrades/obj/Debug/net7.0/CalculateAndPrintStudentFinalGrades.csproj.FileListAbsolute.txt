@@ -1,0 +1,15 @@
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/bin/Debug/net7.0/CalculateAndPrintStudentFinalGrades
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/bin/Debug/net7.0/CalculateAndPrintStudentFinalGrades.deps.json
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/bin/Debug/net7.0/CalculateAndPrintStudentFinalGrades.runtimeconfig.json
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/bin/Debug/net7.0/CalculateAndPrintStudentFinalGrades.dll
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/bin/Debug/net7.0/CalculateAndPrintStudentFinalGrades.pdb
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/obj/Debug/net7.0/CalculateAndPrintStudentFinalGrades.csproj.AssemblyReference.cache
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/obj/Debug/net7.0/CalculateAndPrintStudentFinalGrades.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/obj/Debug/net7.0/CalculateAndPrintStudentFinalGrades.AssemblyInfoInputs.cache
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/obj/Debug/net7.0/CalculateAndPrintStudentFinalGrades.AssemblyInfo.cs
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/obj/Debug/net7.0/CalculateAndPrintStudentFinalGrades.csproj.CoreCompileInputs.cache
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/obj/Debug/net7.0/CalculateAndPrintStudentFinalGrades.dll
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/obj/Debug/net7.0/refint/CalculateAndPrintStudentFinalGrades.dll
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/obj/Debug/net7.0/CalculateAndPrintStudentFinalGrades.pdb
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/obj/Debug/net7.0/CalculateAndPrintStudentFinalGrades.genruntimeconfig.cache
+/Users/sandeepbhattarai/Sites/leetcode-practice/c#/microsoft_learn/CalculateAndPrintStudentFinalGrades/obj/Debug/net7.0/ref/CalculateAndPrintStudentFinalGrades.dll
