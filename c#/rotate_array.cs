@@ -57,3 +57,68 @@ public class Solution
 
     }
 }
+
+public class IncorrectSolution
+{
+    public void Rotate(int[] nums, int k)
+    {
+        int totalElements = nums.Length;
+        if (totalElements == 1)
+        {
+            return;
+        }
+
+        int knegative = k;
+
+        for (int i = 0; i < k; i++)
+        {
+            int first = nums[totalElements - i - 1];
+            int second = nums[knegative - 1];
+
+            nums[knegative - 1] = first;
+            nums[totalElements - i - 1] = second;
+
+            knegative--;
+        }
+
+        knegative = k;
+
+        for (int i = 0; i < k; i++)
+        {
+            int first = nums[totalElements - knegative];
+            int second = nums[k + i];
+
+            nums[k + i] = first;
+            nums[totalElements - knegative] = second;
+
+            knegative--;
+        }
+
+    }
+}
+
+public class TimeoutSolution
+{
+    public void Rotate(int[] nums, int k)
+    {
+        int length = nums.Length;
+        k = k % length;
+
+        int totalIndex = length - 1;
+        int previousItem;
+        int currentItem;
+
+        for (int j = 0; j < k; j++)
+        {
+            previousItem = nums[totalIndex];
+            currentItem = 0;
+
+            for (int i = 0; i < length; i++)
+            {
+                currentItem = nums[i];
+                nums[i] = previousItem;
+                previousItem = currentItem;
+            }
+        }
+    }
+}
