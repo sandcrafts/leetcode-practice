@@ -1,3 +1,4 @@
+<?php
 /*
 27. Remove Element
 Given an integer array nums and an integer val, remove all occurrences of val in nums in-place. The order of the elements may be changed. Then return the number of elements in nums which are not equal to val.
@@ -8,14 +9,16 @@ Change the array nums such that the first k elements of nums contain the element
 Return k.
 */
 
-class Solution {
+class Solution
+{
 
     /**
      * @param Integer[] $nums
      * @param Integer $val
      * @return Integer
      */
-    function removeElement(&$nums, $val) {
+    function removeElement(&$nums, $val)
+    {
         $k = 0;
         for ($i = 0; $i < count($nums); $i++) {
             if ($nums[$i] !== $val) {
