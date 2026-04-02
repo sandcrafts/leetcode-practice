@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/c#/" />
+  <Folder Name="/c#/bestTimeToBuyAndSellStockII/">
+    <Project Path="c#/bestTimeToBuyAndSellStockII/app.csproj" />
+  </Folder>
+</Solution>
