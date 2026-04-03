@@ -29,11 +29,22 @@ Constraints:
 
 */
 
-public class Solution 
+public class Solution
 {
-    public static readonly int[] Input = new int[] {2,3,1,1,4};
-    
-    public int Solve(int[] nums) {
+    public static readonly int[] Input = new int[] {2, 3, 1, 1, 4 };
+
+    public bool Solve(int[] nums) {
+        int maxReach = 0;
+
+        for (int i = 0; i < nums.Length; i++) {
+            if (i > maxReach) {
+                return false;
+            }
+
+            maxReach = Math.Max(maxReach, i + nums[i]);
+        }
+
+        return true;
     }
 }
 
