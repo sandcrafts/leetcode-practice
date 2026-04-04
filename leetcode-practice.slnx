@@ -6,4 +6,7 @@
   <Folder Name="/c#/JumpGame/">
     <Project Path="c#/JumpGame/app.csproj" />
   </Folder>
+  <Folder Name="/c#/JumpGameII/">
+    <Project Path="c#/JumpGameII/app.csproj" />
+  </Folder>
 </Solution>
