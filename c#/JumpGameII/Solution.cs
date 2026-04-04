@@ -29,10 +29,26 @@ It's guaranteed that you can reach nums[n - 1].
 
 public class Solution
 {
-    public static readonly int[] Input = new int[] {2, 3, 1, 1, 4 };
+    public static readonly int[] Input = new int[] { 2, 3, 1, 1, 4 };
 
-    public bool Solve(int[] nums) {
+    public int Solve(int[] nums)
+    {
+        int farthest = 0;
+        int currentEnd = 0;
+        int jumps = 0;
 
+        for (int i = 0; i < nums.Length - 1; i++)
+        {
+            farthest = Math.Max(farthest, nums[i] + i);
+
+            if (currentEnd == i)
+            {
+                currentEnd = farthest;
+                jumps++;
+            }
+        }
+
+        return jumps;
     }
 }
 
