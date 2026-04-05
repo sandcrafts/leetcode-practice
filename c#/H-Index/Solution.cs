@@ -26,6 +26,32 @@ public class Solution
     public static readonly int[] Input = new int[] {3,0,6,1,5};
 
     public int Solve(int[] citations) {
+        int n = citations.Length;
+        int[] buckets = new int[n + 1];
+
+        for(int i = 0; i < n; i++) {
+            if (citations[i] >= n) {
+                buckets[n]++;
+            } else {
+                buckets[citations[i]]++;
+            }
+        }
+
+        int total = 0;
+        
+        for (int i = n; i > 0; i--)
+        {
+            total += buckets[i];
+            
+            if (total >= i) {
+                return i;
+            }
+        }
+
+        return 0;
+    }
+    
+    public int SolveI(int[] citations) {
         if (citations.Length == 1 && citations[0] != 0) {
             return 1;
         }
