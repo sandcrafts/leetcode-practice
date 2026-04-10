@@ -22,10 +22,49 @@ n == height.length
 0 <= height[i] <= 105
 
 */
-public class Solution {
-    public static readonly int[] Input = new int[] {0,1,0,2,1,0,1,3,2,1,2,1};
+public class Solution
+{
+    public static readonly int[] Input = new int[] { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
 
-    public int Solve(int[] height) {
+    public int Solve(int[] height)
+    {
+        int left = 0, right = height.Length - 1;
+        int leftMax = 0, rightMax = 0;
+        int total = 0;
+
+        while (left < right)
+        {
+            if (height[left] < height[right])
+            {
+                if (height[left] >= leftMax)
+                {
+                    leftMax = height[left];
+                }
+                else
+                {
+                    total += leftMax - height[left];
+                }
+                left++;
+            }
+            else
+            {
+                if (height[right] >= rightMax)
+                {
+                    rightMax = height[right];
+                }
+                else
+                {
+                    total += rightMax - height[right];
+                }
+                right--;
+            }
+        }
+
+        return total;
+    }
+
+    public int SolveI(int[] height)
+    {
         int totalTrapped = 0;
         int currentTrapped = 0;
         int n = height.Length;
@@ -33,15 +72,18 @@ public class Solution {
         List<int> currentTrappedIndex = new List<int>();
         List<int> finalTrappedIndex = new List<int>();
 
-        for (int i = 0; i < n; i++ ) {
+        for (int i = 0; i < n; i++)
+        {
             int diff = startWidth - height[i];
 
-            if (diff > 0) {
+            if (diff > 0)
+            {
                 currentTrapped += diff;
                 currentTrappedIndex.Add(i);
             }
 
-            if (height[i] >= startWidth) {
+            if (height[i] >= startWidth)
+            {
                 startWidth = height[i];
                 totalTrapped += currentTrapped;
                 currentTrapped = 0;
@@ -50,22 +92,26 @@ public class Solution {
         }
 
         currentTrapped = 0;
-        startWidth = height[n-1];
+        startWidth = height[n - 1];
         currentTrappedIndex.Clear();
-        for (int i = n-1; i >=0 ; i--) {
+        for (int i = n - 1; i >= 0; i--)
+        {
             int diff = startWidth - height[i];
 
-            if (diff > 0) {
+            if (diff > 0)
+            {
                 currentTrapped += diff;
                 currentTrappedIndex.Add(i);
             }
 
-            if (height[i] >= startWidth) {
-                if (!currentTrappedIndex.Any(x => finalTrappedIndex.Contains(x))){
-                totalTrapped += currentTrapped;
+            if (height[i] >= startWidth)
+            {
+                if (!currentTrappedIndex.Any(x => finalTrappedIndex.Contains(x)))
+                {
+                    totalTrapped += currentTrapped;
                 }
-                    currentTrapped = 0;
-                    startWidth = height[i];
+                currentTrapped = 0;
+                startWidth = height[i];
 
             }
         }
