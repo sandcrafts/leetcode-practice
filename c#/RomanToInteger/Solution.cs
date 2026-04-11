@@ -26,11 +26,45 @@ public class Solution
 {
     public static readonly string Input = "MCMXCIV";
 
-        public int Solve(string s) {
-        Dictionary<char, int> romanIntMap = new Dictionary<char, int> {
+    private static readonly Dictionary<char, int> romanIntMap = new Dictionary<char, int>
+    {
+        ['I'] = 1,
+        ['V'] = 5,
+        ['X'] = 10,
+        ['L'] = 50,
+        ['C'] = 100,
+        ['D'] = 500,
+        ['M'] = 1000
+    };
+
+    public int Solve(string s)
+    {
+        int intTotal = romanIntMap[s[^1]];
+
+        for (int i = s.Length - 2; i >= 0; i--)
+        {
+            int current = romanIntMap[s[i]];
+            int previous = romanIntMap[s[i + 1]];
+            if (current < previous)
+            {
+                intTotal -= current;
+            }
+            else
+            {
+                intTotal += current;
+            }
+        }
+
+        return intTotal;
+    }
+
+    public int SolveI(string s)
+    {
+        Dictionary<char, int> romanIntMap = new Dictionary<char, int>
+        {
             ['I'] = 1,
             ['V'] = 5,
-            ['X'] =10,
+            ['X'] = 10,
             ['L'] = 50,
             ['C'] = 100,
             ['D'] = 500,
@@ -43,8 +77,10 @@ public class Solution
 
         int intTotal = romanIntMap[romans[length - 1]];
 
-        for (int i = length - 2; i >= 0; i--) {
-            if (romanIntMap[romans[i]] < romanIntMap[romans[i+1]]) {
+        for (int i = length - 2; i >= 0; i--)
+        {
+            if (romanIntMap[romans[i]] < romanIntMap[romans[i + 1]])
+            {
                 intTotal -= romanIntMap[romans[i]];
 
                 continue;
