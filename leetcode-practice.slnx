@@ -21,6 +21,9 @@
   <Folder Name="/c#/ProductOfArrayExceptSelf/">
     <Project Path="c#/ProductOfArrayExceptSelf/app.csproj" />
   </Folder>
+  <Folder Name="/c#/RomanToInteger/">
+    <Project Path="c#/RomanToInteger/app.csproj" />
+  </Folder>
   <Folder Name="/c#/TrappingRainWater/">
     <Project Path="c#/TrappingRainWater/app.csproj" />
   </Folder>
