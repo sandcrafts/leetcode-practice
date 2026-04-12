@@ -12,6 +12,9 @@
   <Folder Name="/c#/insert-delete-get-random-O(1)/">
     <Project Path="c#/insert-delete-get-random-O(1)/app.csproj" />
   </Folder>
+  <Folder Name="/c#/IntegerToRoman/">
+    <Project Path="c#/IntegerToRoman/app.csproj" />
+  </Folder>
   <Folder Name="/c#/JumpGame/">
     <Project Path="c#/JumpGame/app.csproj" />
   </Folder>
