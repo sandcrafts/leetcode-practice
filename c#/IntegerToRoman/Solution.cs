@@ -62,11 +62,13 @@ Constraints:
 1 <= num <= 3999
 */
 
+using System.Text;
+
 public class Solution
 {
     public static readonly int Input = 3749;
 
-    private static readonly (int decimalValue, string roman)[] intToToRomanStore = new (int decimalValue, string)[]
+    private static readonly (int, string)[] intToRomanStore = new (int, string)[]
         {
             (1000, "M"),
             (900, "CM"),
@@ -84,6 +86,30 @@ public class Solution
         };
 
     public string Solve(int num)
+    {
+        StringBuilder finalRomanValue = new StringBuilder();
+
+        int remainder = num;
+
+        while (remainder > 0)
+        {
+            foreach ((int decimalValue, string roman) in intToRomanStore)
+            {
+                if (remainder >= decimalValue)
+                {
+                    remainder = remainder - decimalValue;
+                    finalRomanValue = finalRomanValue.Append(roman);
+
+                    break;
+                }
+            }
+        }
+        ;
+
+        return finalRomanValue.ToString();
+    }
+
+    public string SolveI(int num)
     {
         int length = num.ToString().Length;
         if (length > 4)
@@ -120,7 +146,7 @@ public class Solution
         string defaultRoman = "";
         int defaultRemainder = 0;
 
-        foreach ((int decimalValue, string roman) in intToToRomanStore)
+        foreach ((int decimalValue, string roman) in intToRomanStore)
         {
             if (decimalPositionValue >= decimalValue)
             {
