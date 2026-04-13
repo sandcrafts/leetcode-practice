@@ -26,7 +26,32 @@ public class Solution
 {
     public static readonly string Input = "   fly me   to   the moon  ";
 
-    public int Solve(string s) {
+    public int Solve(string s)
+    {
+        bool charFound = false;
+        int total = 0;
+        for (int i = s.Length - 1; i >= 0; i--)
+        {
+            if (s[i] != ' ')
+            {
+                charFound = true;
+            }
+
+            if (charFound)
+            {
+                if (s[i] == ' ')
+                {
+                    return total;
+                }
+                total++;
+            }
+        }
+
+        return total;
+    }
+
+    public int SolveI(string s)
+    {
         string[] exploded = s.Trim().Split(' ');
 
         string lastWord = exploded[exploded.Length - 1];
