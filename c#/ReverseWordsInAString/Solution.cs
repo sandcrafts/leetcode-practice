@@ -44,16 +44,16 @@ public class Solution
 
     public string Solve(string s) {
         string[] arrayOfWords = s.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        string[] reversed = arrayOfWords.Reverse().ToArray();
+        
         StringBuilder finalSentence = new StringBuilder();
 
-        for (int i = 0; i < reversed.Length; i++)
+        for (int i = arrayOfWords.Length - 1; i >= 0; i--)
         {
-            finalSentence.Append(reversed[i] + " ");
+            finalSentence.Append(arrayOfWords[i] + " ");
         }
 
         finalSentence.Length--;
-        
+
         return finalSentence.ToString();
     }
 }
