@@ -49,13 +49,11 @@ public class Solution
 
         for (int i = 0; i < reversed.Length; i++)
         {
-            finalSentence.Append(reversed[i]);
-                
-            if (i != reversed.Length - 1){
-                finalSentence.Append(" ");
-            }
+            finalSentence.Append(reversed[i] + " ");
         }
 
+        finalSentence.Length--;
+        
         return finalSentence.ToString();
     }
 }
