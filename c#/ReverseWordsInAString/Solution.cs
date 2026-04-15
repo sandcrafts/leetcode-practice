@@ -36,15 +36,27 @@ There is at least one word in s.
 
 Follow-up: If the string data type is mutable in your language, can you solve it in-place with O(1) extra space?
 */
+using System.Text;
+
 public class Solution
 {
     public static readonly string Input = "a good   example";
 
-    public string Solve(string s)
-    {
-        string output = "example good a";
+    public string Solve(string s) {
+        string[] arrayOfWords = s.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        string[] reversed = arrayOfWords.Reverse().ToArray();
+        StringBuilder finalSentence = new StringBuilder();
 
-        return output;
+        for (int i = 0; i < reversed.Length; i++)
+        {
+            finalSentence.Append(reversed[i]);
+                
+            if (i != reversed.Length - 1){
+                finalSentence.Append(" ");
+            }
+        }
+
+        return finalSentence.ToString();
     }
 }
 
