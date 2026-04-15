@@ -41,10 +41,18 @@ using System.Text;
 public class Solution
 {
     public static readonly string Input = "a good   example";
-
-    public string Solve(string s) {
+    
+    public string Solve(string s)
+    {
         string[] arrayOfWords = s.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        
+
+        return string.Join(" ", arrayOfWords.Reverse());
+    }
+
+    public string SolveI(string s)
+    {
+        string[] arrayOfWords = s.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
         StringBuilder finalSentence = new StringBuilder();
 
         for (int i = arrayOfWords.Length - 1; i >= 0; i--)
