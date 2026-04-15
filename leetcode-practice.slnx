@@ -30,6 +30,9 @@
   <Folder Name="/c#/ProductOfArrayExceptSelf/">
     <Project Path="c#/ProductOfArrayExceptSelf/app.csproj" />
   </Folder>
+  <Folder Name="/c#/ReverseWordsInAString/">
+    <Project Path="c#/ReverseWordsInAString/app.csproj" />
+  </Folder>
   <Folder Name="/c#/RomanToInteger/">
     <Project Path="c#/RomanToInteger/app.csproj" />
   </Folder>
