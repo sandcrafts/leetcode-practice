@@ -44,7 +44,47 @@ public class Solution
     public static readonly string InputString = "PAYPALISHIRING";
     public static readonly int NumRows = 3;
     
-    public string Solve(string s, int numRows) {
+    // beats 61% time
+        public string Solve(string s, int numRows) {
+        if (numRows == 1) {
+            return s;
+        }
+
+        List<StringBuilder> listString = new List<StringBuilder>();
+        bool ascend = true;
+        int n = 0;
+
+        for (int i = 0; i < numRows; i++) {
+            listString.Add(new StringBuilder());
+        }
+
+        for (int i = 0; i < s.Length; i++)
+        {   
+            listString.Add(new StringBuilder());
+
+            if (n == 0){
+                ascend = true;
+            } else if (n == numRows - 1) {
+                ascend = false;
+            }
+
+            if (ascend) {
+                n++;
+            } else {
+                n--;
+            }
+        }
+
+        StringBuilder zigzag = new StringBuilder();
+        foreach(StringBuilder stringer in listString) {
+            zigzag.Append(stringer);
+        }
+
+        return zigzag.ToString();
+    }
+
+    //beats 13% time
+    public string SolveII(string s, int numRows) {
         StringBuilder zigzag = new StringBuilder();
         Dictionary<int, List<char>> map = new Dictionary<int, List<char>>();
         bool ascend = true;
