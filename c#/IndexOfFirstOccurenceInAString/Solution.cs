@@ -27,22 +27,28 @@ public class Solution
 {
     public static readonly string HAYSTACK = "sadbutsad";
     public static readonly string NEEDLE = "sad";
-    
-    public int Solve(string haystack, string needle) {
+
+    public int Solve(string haystack, string needle)
+    {
         int index = -1;
         for (int i = 0; i <= (haystack.Length - needle.Length); i++)
         {
-            if (haystack[i] == needle[0]){
-                if (needle.Length == 1) {
+            if (haystack[i] == needle[0])
+            {
+                if (needle.Length == 1)
+                {
                     return i;
                 }
 
-                for (int j = 1; j < needle.Length; j++){
-                    if (!(needle[j] == haystack[i+j])) {
+                for (int j = 1; j < needle.Length; j++)
+                {
+                    if (!(needle[j] == haystack[i + j]))
+                    {
                         break;
                     }
 
-                    if (j == needle.Length - 1) {
+                    if (j == needle.Length - 1)
+                    {
                         return i;
                     }
                 }
@@ -50,6 +56,11 @@ public class Solution
         }
 
         return index;
+    }
+
+    public int SolveI(string haystack, string needle)
+    {
+        return haystack.IndexOf(needle);
     }
 }
 
