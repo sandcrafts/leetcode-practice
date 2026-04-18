@@ -67,14 +67,86 @@ public class Solution
     // beats 61% time
     public IList<string> Solve(string[] words, int maxWidth)
     {
-        return [
-        "Science  is  what we",
-        "understand      well",
-        "enough to explain to",
-        "a  computer.  Art is",
-        "everything  else  we",
-        "do                  "
-       ];
+        List<string> lineContents = new List<string>();
+        List<string> final = new List<string>();
+        int currentLineWidthWithoutSpaces = 0;
+        int n = words.Length;
+
+        for (int i = 0; i < n; i++)
+        {
+            if (currentLineWidthWithoutSpaces + lineContents.Count + words[i].Length > maxWidth)
+            {
+                int equalSpace;
+                int extraSpace = 0;
+                int remainingSpaces = maxWidth - currentLineWidthWithoutSpaces;
+                int currentLineWordCount = lineContents.Count;
+
+                if (currentLineWordCount > 1)
+                {
+                    equalSpace = remainingSpaces / (currentLineWordCount - 1);
+                    extraSpace = remainingSpaces % (currentLineWordCount - 1);
+                }
+                else
+                {
+                    equalSpace = remainingSpaces;
+                }
+
+                StringBuilder finalLine = new StringBuilder();
+
+                for (int k = 0; k < currentLineWordCount; k++)
+                {
+                    finalLine.Append(lineContents[k]);
+
+                    if ((k == (currentLineWordCount - 1)) && (currentLineWordCount != 1))
+                    {
+                        break;
+                    }
+                    for (int j = 1; j <= equalSpace; j++)
+                    {
+                        finalLine.Append(" ");
+                    }
+
+                    if (extraSpace > 0)
+                    {
+                        finalLine.Append(" ");
+                        extraSpace--;
+                    }
+
+                }
+
+                final.Add(finalLine.ToString());
+                lineContents.Clear();
+                currentLineWidthWithoutSpaces = 0;
+            }
+
+            lineContents.Add(words[i]);
+            currentLineWidthWithoutSpaces += words[i].Length;
+
+            if (n == 1 || i == n - 1)
+            {
+                StringBuilder finalLine = new StringBuilder();
+                int endSpace = maxWidth - currentLineWidthWithoutSpaces - (lineContents.Count - 1);
+
+                for (int q = 0; q < lineContents.Count; q++)
+                {
+                    finalLine.Append(lineContents[q]);
+
+                    if (q != lineContents.Count - 1)
+                    {
+                        finalLine.Append(" ");
+                    }
+                }
+
+                for (int r = 1; r <= endSpace; r++)
+                {
+                    finalLine.Append(" ");
+                }
+
+                final.Add(finalLine.ToString());
+            }
+        }
+
+        return final;
     }
 }
 
