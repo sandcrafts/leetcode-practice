@@ -64,7 +64,6 @@ public class Solution
     ];
     public static readonly int MaxWidth = 20;
 
-    // beats 61% time
     public IList<string> Solve(string[] words, int maxWidth)
     {
         List<string> lineContents = new List<string>();
