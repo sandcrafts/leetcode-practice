@@ -6,6 +6,9 @@
   <Folder Name="/c#/Candy/">
     <Project Path="c#/Candy/app.csproj" />
   </Folder>
+  <Folder Name="/c#/FullJustify/">
+    <Project Path="c#/FullJustify/app.csproj" />
+  </Folder>
   <Folder Name="/c#/GasStation/">
     <Project Path="c#/GasStation/app.csproj" />
   </Folder>
@@ -45,4 +48,5 @@
   <Folder Name="/c#/ZigzagConversion/">
     <Project Path="c#/ZigzagConversion/app.csproj" />
   </Folder>
+  <Project Path="../ConsoleApp1/ConsoleApp1.csproj" />
 </Solution>
