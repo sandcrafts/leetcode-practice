@@ -31,23 +31,21 @@ public class Solution
         int left = 0;
         int right = s.Length - 1;
 
-        string lower = s.ToLower();
-
         while (left < right)
         {
-            if (!char.IsLetterOrDigit(lower[left]))
+            if (!char.IsLetterOrDigit(s[left]))
             {
                 left ++;
                 continue;
             }
 
-            if (!char.IsLetterOrDigit(lower[right]))
+            if (!char.IsLetterOrDigit(s[right]))
             {
                 right --;
                 continue;
             }
 
-            if (lower[left] != lower[right])
+            if (char.ToLowerInvariant(s[left]) != char.ToLowerInvariant(s[right]))
             {
                 return false;
             }
