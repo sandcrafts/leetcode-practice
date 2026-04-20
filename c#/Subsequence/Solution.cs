@@ -33,8 +33,28 @@ public class Solution
     public static readonly string T = "ahbgdc";
     public static readonly string S = "abc";
 
-    public bool Solve(string s, string t) {
-        if (s.Length == 0) {
+    public bool Solve(string s, string t)
+    {
+        int sIndex = 0;
+        int tIndex = 0;
+
+        while (sIndex < s.Length && tIndex < t.Length)
+        {
+            if (s[sIndex] == t[tIndex])
+            {
+                sIndex++;
+            }
+
+            tIndex++;
+        }
+
+        return sIndex == s.Length;
+    }
+
+    public bool SolveI(string s, string t)
+    {
+        if (s.Length == 0)
+        {
             return true;
         }
         int tLeft = 0;
@@ -42,18 +62,21 @@ public class Solution
         int sLeft = 0;
         int sRight = s.Length - 1;
 
-        while (tLeft <= tRight) {
+        while (tLeft <= tRight)
+        {
             if (tLeft == tRight && sLeft < sRight)
             {
                 return false;
             }
 
-            if (t[tLeft] != s[sLeft]) {
-                tLeft ++;
+            if (t[tLeft] != s[sLeft])
+            {
+                tLeft++;
                 continue;
             }
-            if (t[tRight] != s[sRight]) {
-                tRight --;
+            if (t[tRight] != s[sRight])
+            {
+                tRight--;
                 continue;
             }
 
@@ -67,7 +90,7 @@ public class Solution
             tLeft++;
             tRight--;
 
-            if (sLeft > sRight) 
+            if (sLeft > sRight)
             {
                 return true;
             }
