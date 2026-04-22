@@ -17,6 +17,12 @@ Example 2:
 
 Input: height = [1,1]
 Output: 1
+
+Constraints:
+
+n == height.length
+2 <= n <= 105
+0 <= height[i] <= 104
 */
 public class Solution
 {
@@ -24,6 +30,25 @@ public class Solution
 
     public int Solve(int[] height)
     {
+        int left = 0;
+        int right = height.Length - 1;
+        int totalTrapped = 0;
+
+        while (left < right)
+        {
+            totalTrapped = Math.Max(totalTrapped, Math.Min(height[left], height[right]) * (right - left));
+
+            if (height[left] > height[right])
+            {
+                right--;
+            }
+            else
+            {
+                left++;
+            }
+        }
+
+        return totalTrapped;
     }
 }
 
