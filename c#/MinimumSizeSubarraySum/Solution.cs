@@ -34,9 +34,35 @@ public class Solution {
     public static readonly int[] Nums = new int[] {2,3,1,2,4,3};
     public static readonly int Target = 7;
 
+    // first go: correct but time limit exceeded
     public int Solve(int target, int[] nums)
     {
-        return 0;
+        int min = nums.Length + 1;
+
+        for (int i = 0; i < nums.Length; i++) {
+            int left = i;
+            int sum = 0;
+            int count = 0;
+
+            while (left >= 0) {
+                sum += nums[left];
+                count++;
+                if (sum >= target) {
+                    if (count < min) {
+                        min = count;
+                    }
+                    break;
+                }
+
+                left --;
+            }
+        }
+
+        if (min <= nums.Length) {
+            return min;
+        } else {
+            return 0;
+        }
     }
 }
 
