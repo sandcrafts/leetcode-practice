@@ -32,7 +32,7 @@ public class Solution
 {
     public static readonly int[] Input = new int[] {1,2,3,4};
 
-    public int[] Solve(int[] nums) {
+    public int[] Solve(int[] nums) { 
         int[] answer = new int[nums.Length];
         int leftProduct = 1;
         int rightProduct = 1;
