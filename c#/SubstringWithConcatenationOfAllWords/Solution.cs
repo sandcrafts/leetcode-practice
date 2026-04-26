@@ -56,92 +56,191 @@ s and words[i] consist of lowercase English letters.
 */
 public class Solution
 {
-    public static readonly string S = "barfoofoobarthefoobarman";
-    public static readonly string[] Words = { "bar", "foo", "the" };
+    public static readonly string S = "barfoothefoobarman";
+    public static readonly string[] Words = { "bar", "foo" };
+
+    public static readonly string S2 = "barfoofoobarthefoobarman";
+    public static readonly string[] Words2 = { "bar", "foo", "the" };
+
+    public static readonly string S3 = "wordgoodgoodgoodbestword";
+    public static readonly string[] Words3 = { "word","good","best","word" };
 
     public IList<int> Solve(string s, string[] words)
     {
+                List<int> indices = new List<int>();
+        Dictionary<string, int> map = new Dictionary<string, int>();
+        foreach (string word in words)
         {
-            List<int> indices = new List<int>();
-            Dictionary<string, bool> map = new Dictionary<string, bool>();
-            foreach (string word in words)
+            if (map.ContainsKey(word))
             {
-                map[word] = false;
+                map[word]++;
             }
-            int wordLength = words[0].Length;
-            int lengthOfSubstring = words[0].Length * words.Length;
-
-            for (int offset = 0; offset < wordLength; offset++)
+            else
             {
-                int left = offset;
-                foreach (var key in map.Keys.ToList())
-                {
-                    map[key] = false;
-                }
-                for (int right = offset + wordLength - 1; right < s.Length; right += wordLength)
-                {
-                    string wordSubstring = s.Substring(right - wordLength + 1, wordLength);
+                map[word] = 1;
+            }
+        }
 
-                    if (map.ContainsKey(wordSubstring))
+        Dictionary<string, int> window = new Dictionary<string, int>();
+        foreach (var key in map.Keys)
+        {
+            window[key] = 0;
+        }
+
+        int wordLength = words[0].Length;
+
+        for (int offset = 0; offset < wordLength; offset++)
+        {
+            int left = offset;
+            int count = 0;
+            foreach (var key in window.Keys)
+            {
+                window[key] = 0;
+            }
+            for (int right = offset + wordLength - 1; right < s.Length; right += wordLength)
+            {
+                string wordSubstring = s.Substring(right - wordLength + 1, wordLength);
+
+                if (map.ContainsKey(wordSubstring))
+                {
+                    if (window[wordSubstring] < map[wordSubstring])
                     {
-                        if (map[wordSubstring] == false)
+                        window[wordSubstring]++;
+                        count++;
+
+                        if (count < words.Length)
                         {
-                            map[wordSubstring] = true;
+                            continue;
+                        }
 
-                            bool falseValueFound = false;
-
-                            foreach (var kvp in map)
-                            {
-                                if (kvp.Value == false)
-                                {
-                                    falseValueFound = true;
-                                    break;
-                                }
+                        indices.Add(left);
+                        string leftWord = s.Substring(left, wordLength);
+                        if (window.ContainsKey(leftWord))
+                        {
+                            window[leftWord]--;
+                            count--;
+                        }
+                        left += wordLength;
+                    } else {
+                        while (left <= right)
+                        {
+                            string possibleDuplicate = s.Substring(left, wordLength);
+                            if (window.ContainsKey(possibleDuplicate)) {
+                                window[possibleDuplicate]--;
+                                count--;
                             }
-
-                            if (falseValueFound)
-                            {
-                                continue;
-                            }
-
-                            indices.Add(left);
-                            string leftWord = s.Substring(left, wordLength);
-                            map[leftWord] = false;
 
                             left += wordLength;
-                        }
-                        else
-                        {
-                            while (left <= right)
+
+                            if (possibleDuplicate == wordSubstring)
                             {
-                                string possibleDuplicate = s.Substring(left, wordLength);
-
-                                map[possibleDuplicate] = false;
-                                left += wordLength;
-
-                                if (possibleDuplicate == wordSubstring)
-                                {
-                                    break;
-                                }
-
+                                break;
                             }
-                            map[wordSubstring] = true;
+
                         }
+
+                        window[wordSubstring]++;
+                        count++;
+                    }
+                }
+                else
+                {
+                    foreach (var key in window.Keys)
+                    {
+                        window[key] = 0;
+                    }
+
+                    count = 0;
+                    left = right + 1;
+                }
+            }
+        }
+
+        return indices;
+    }
+
+    // doesnt work fully because of possible duplicate of the same word
+    public IList<int> Solve1(string s, string[] words)
+    {
+        List<int> indices = new List<int>();
+        Dictionary<string, bool> map = new Dictionary<string, bool>();
+        foreach (string word in words)
+        {
+            map[word] = false;
+        }
+        int wordLength = words[0].Length;
+        int lengthOfSubstring = words[0].Length * words.Length;
+
+        for (int offset = 0; offset < wordLength; offset++)
+        {
+            int left = offset;
+            foreach (var key in map.Keys.ToList())
+            {
+                map[key] = false;
+            }
+            for (int right = offset + wordLength - 1; right < s.Length; right += wordLength)
+            {
+                string wordSubstring = s.Substring(right - wordLength + 1, wordLength);
+
+                if (map.ContainsKey(wordSubstring))
+                {
+                    if (map[wordSubstring] == false)
+                    {
+                        map[wordSubstring] = true;
+
+                        bool falseValueFound = false;
+
+                        foreach (var kvp in map)
+                        {
+                            if (kvp.Value == false)
+                            {
+                                falseValueFound = true;
+                                break;
+                            }
+                        }
+
+                        if (falseValueFound)
+                        {
+                            continue;
+                        }
+
+                        indices.Add(left);
+                        string leftWord = s.Substring(left, wordLength);
+                        map[leftWord] = false;
+
+                        left += wordLength;
                     }
                     else
                     {
-                        foreach (var key in map.Keys.ToList())
+                        while (left <= right)
                         {
-                            map[key] = false;
-                        }
+                            string possibleDuplicate = s.Substring(left, wordLength);
 
-                        left = right + 1;
+                            map[possibleDuplicate] = false;
+                            left += wordLength;
+
+                            if (possibleDuplicate == wordSubstring)
+                            {
+                                break;
+                            }
+
+                        }
+                        map[wordSubstring] = true;
                     }
                 }
-            }
+                else
+                {
+                    foreach (var key in map.Keys.ToList())
+                    {
+                        map[key] = false;
+                    }
 
-            return indices;
+                    left = right + 1;
+                }
+            }
         }
+
+        return indices;
     }
 }
 
