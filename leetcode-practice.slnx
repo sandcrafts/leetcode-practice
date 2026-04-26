@@ -54,6 +54,9 @@
   <Folder Name="/c#/Subsequence/">
     <Project Path="c#/Subsequence/app.csproj" />
   </Folder>
+  <Folder Name="/c#/SubstringWithConcatenationOfAllWords/">
+    <Project Path="c#/SubstringWithConcatenationOfAllWords/app.csproj" />
+  </Folder>
   <Folder Name="/c#/ThreeSum/">
     <Project Path="c#/ThreeSum/app.csproj" />
   </Folder>
