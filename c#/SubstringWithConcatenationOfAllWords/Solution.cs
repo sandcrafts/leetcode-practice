@@ -63,11 +63,146 @@ public class Solution
     public static readonly string[] Words2 = { "bar", "foo", "the" };
 
     public static readonly string S3 = "wordgoodgoodgoodbestword";
-    public static readonly string[] Words3 = { "word","good","best","word" };
+    public static readonly string[] Words3 = { "word", "good", "best", "word" };
 
+    // beats 87% time and 84% memory slightly slower than solution 3 but easier to undersatand
     public IList<int> Solve(string s, string[] words)
     {
-                List<int> indices = new List<int>();
+        List<int> indices = new List<int>();
+        int stringLength = s.Length;
+        int wordCount = words.Length;
+        int wordLength = words[0].Length;
+        int substringLength = wordLength * wordCount;
+
+        if (stringLength < substringLength)
+        {
+            return indices;
+        }
+
+        Dictionary<string, int> map = new Dictionary<string, int>();
+        foreach (string word in words)
+        {
+            map[word] = map.GetValueOrDefault(word, 0) + 1;
+        }
+
+        for (int offset = 0; offset < wordLength; offset++)
+        {
+            int left = offset;
+            int count = 0;
+
+
+            Dictionary<string, int> window = new Dictionary<string, int>();
+
+            for (int right = offset; right + wordLength <= stringLength; right += wordLength)
+            {
+                string wordSubstring = s.Substring(right, wordLength);
+
+                if (map.ContainsKey(wordSubstring))
+                {
+                    int expectedWordCount = map[wordSubstring];
+                    window[wordSubstring] = window.GetValueOrDefault(wordSubstring, 0) + 1;
+                    count++;
+
+                    while (window[wordSubstring] > expectedWordCount)
+                    {
+                        string leftWord = s.Substring(left, wordLength);
+                        window[leftWord]--;
+                        left += wordLength;
+                        count--;
+                    }
+
+                    if (count == wordCount)
+                    {
+                        indices.Add(left);
+                        string leftWord = s.Substring(left, wordLength);
+                        window[leftWord]--;
+                        count--;
+                        left += wordLength;
+                    }
+                }
+                else
+                {
+                    window.Clear();
+                    count = 0;
+                    left = right + wordLength;
+                }
+            }
+        }
+
+        return indices;
+    }
+
+    // beats 90% time and 90% memory
+    public IList<int> SolveIII(string s, string[] words)
+    {
+        List<int> indices = new List<int>();
+        int stringLength = s.Length;
+        int wordCount = words.Length;
+        int wordLength = words[0].Length;
+        int substringLength = wordLength * wordCount;
+
+        if (stringLength < substringLength)
+        {
+            return indices;
+        }
+
+        Dictionary<string, int> map = new Dictionary<string, int>();
+        foreach (string word in words)
+        {
+            map[word] = map.GetValueOrDefault(word, 0) + 1;
+        }
+
+        for (int offset = 0; offset < wordLength; offset++)
+        {
+            int left = offset;
+            int count = 0;
+
+
+            Dictionary<string, int> window = new Dictionary<string, int>();
+
+            for (int right = offset; right + wordLength <= stringLength; right += wordLength)
+            {
+                string wordSubstring = s.Substring(right, wordLength);
+
+                if (map.TryGetValue(wordSubstring, out int target))
+                {
+                    window[wordSubstring] = window.GetValueOrDefault(wordSubstring, 0) + 1;
+                    count++;
+
+                    while (window[wordSubstring] > target)
+                    {
+                        string leftWord = s.Substring(left, wordLength);
+                        window[leftWord]--;
+                        left += wordLength;
+                        count--;
+                    }
+
+                    if (count == wordCount)
+                    {
+                        indices.Add(left);
+                        string leftWord = s.Substring(left, wordLength);
+                        window[leftWord]--;
+                        count--;
+                        left += wordLength;
+                    }
+                }
+                else
+                {
+                    window.Clear();
+                    count = 0;
+                    left = right + wordLength;
+                }
+            }
+        }
+
+        return indices;
+    }
+
+
+    // only beats 23% time and 17% memory
+    public IList<int> SolveI(string s, string[] words)
+    {
+        List<int> indices = new List<int>();
         Dictionary<string, int> map = new Dictionary<string, int>();
         foreach (string word in words)
         {
@@ -121,11 +256,14 @@ public class Solution
                             count--;
                         }
                         left += wordLength;
-                    } else {
+                    }
+                    else
+                    {
                         while (left <= right)
                         {
                             string possibleDuplicate = s.Substring(left, wordLength);
-                            if (window.ContainsKey(possibleDuplicate)) {
+                            if (window.ContainsKey(possibleDuplicate))
+                            {
                                 window[possibleDuplicate]--;
                                 count--;
                             }
@@ -160,7 +298,7 @@ public class Solution
     }
 
     // doesnt work fully because of possible duplicate of the same word
-    public IList<int> Solve1(string s, string[] words)
+    public IList<int> SolveII(string s, string[] words)
     {
         List<int> indices = new List<int>();
         Dictionary<string, bool> map = new Dictionary<string, bool>();
