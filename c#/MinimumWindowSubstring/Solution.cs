@@ -1,31 +1,39 @@
 /*
+76. Minimum Window Substring
 
-392. Is Subsequence
+Given two strings s and t of lengths m and n respectively, return the minimum window substring of s such that every character in t (including duplicates) is included in the window. If there is no such substring, return the empty string "".
 
-Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
-
-A subsequence of a string is a new string that is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (i.e., "ace" is a subsequence of "abcde" while "aec" is not).
+The testcases will be generated such that the answer is unique.
 
  
 
 Example 1:
 
-Input: s = "abc", t = "ahbgdc"
-Output: true
+Input: s = "ADOBECODEBANC", t = "ABC"
+Output: "BANC"
+Explanation: The minimum window substring "BANC" includes 'A', 'B', and 'C' from string t.
 Example 2:
 
-Input: s = "axc", t = "ahbgdc"
-Output: false
+Input: s = "a", t = "a"
+Output: "a"
+Explanation: The entire string s is the minimum window.
+Example 3:
+
+Input: s = "a", t = "aa"
+Output: ""
+Explanation: Both 'a's from t must be included in the window.
+Since the largest window of s only has one 'a', return empty string.
  
 
 Constraints:
 
-0 <= s.length <= 100
-0 <= t.length <= 104
-s and t consist only of lowercase English letters.
+m == s.length
+n == t.length
+1 <= m, n <= 105
+s and t consist of uppercase and lowercase English letters.
  
 
-Follow up: Suppose there are lots of incoming s, say s1, s2, ..., sk where k >= 109, and you want to check one by one to see if t has its subsequence. In this scenario, how would you change your code?
+Follow up: Could you find an algorithm that runs in O(m + n) time?
 
 */
 using System.Text;
