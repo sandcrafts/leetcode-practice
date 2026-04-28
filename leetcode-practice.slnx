@@ -72,6 +72,9 @@
   <Folder Name="/c#/ValidPalindrome/">
     <Project Path="c#/ValidPalindrome/app.csproj" />
   </Folder>
+  <Folder Name="/c#/ValidSudoku/">
+    <Project Path="c#/ValidSudoku/app.csproj" />
+  </Folder>
   <Folder Name="/c#/ZigzagConversion/">
     <Project Path="c#/ZigzagConversion/app.csproj" />
   </Folder>
