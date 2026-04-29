@@ -23,8 +23,6 @@ public class Solution
             spiralList.Add(value);
         }
 
-
-
         bool isRow = false;
         int rowCount = matrix.Length;
         int columnCount = matrix[0].Length;
