@@ -20,41 +20,38 @@ public class Solution
         // initialized with the first row. so that we can always leave the first item when crawling.
         List<int> spiralList = [.. matrix[0]];
 
-        int remainingRowCount = matrix.Length  - 1;
-        int remainingColumnCount = matrix[0].Length  - 1;
-
+        int rowsRemaining = matrix.Length  - 1;
+        int columnsRemaining = matrix[0].Length  - 1;
 
         // list was initialized with the first row. We still start from the first row and go downwards
         int row = 0;
         
         // list was initialized with the first row. So,
         // we start from the last column and we have the remainingColumnCount number of columns to go
-        int column = remainingColumnCount;
+        int column = columnsRemaining;
 
         int length;
-        bool isRowCrawl;
-        bool isPositiveCrawl;
-        int i = 1;
+        int batch = 1;
 
         while (true)
         {
             // if value of i is 0,1 positive; 2,3 negative; 4,5 positive and so on
-            isPositiveCrawl = i / 2 % 2 == 0;
+            bool isPositiveCrawl = ((batch / 2) % 2 == 0);
+            // even i → row crawl (left/right)
+            // odd i → column crawl (up/down)
+            bool isRowCrawl = batch % 2 == 0;
 
-            // if i is odd, it is a columnCrawl else it is a rowCrawl
-            if (i % 2 == 0)
+            if (isRowCrawl)
             {
-                length = remainingColumnCount;
-                //everytime we crawl through a column, there is 1 less column to crawl next time.
-                remainingColumnCount--;
-                isRowCrawl = true;
+                length = columnsRemaining;
+                // if we move through horizontally in a row, there is 1 less vertical step we need to make next time
+                columnsRemaining--;
             }
             else
             {
-                length = remainingRowCount;
-                //everytime we crawl through a row, there is 1 less row to crawl next time.
-                remainingRowCount--;
-                isRowCrawl = false;
+                length = rowsRemaining;
+                // if we move through vertically in a column, there is 1 less horizontal step we need to make next time
+                rowsRemaining--;
             }
 
             if (length <= 0)
@@ -67,31 +64,19 @@ public class Solution
             {
                 if (isRowCrawl)
                 {
-                    if (isPositiveCrawl)
-                    {
-                        column++;
-                    }
-                    else
-                    {
-                        column--;
-                    }
+                    // we increase or decrease the column index. moving right or left
+                    column += isPositiveCrawl ? 1 : -1;
                 }
                 else
                 {
-                    if (isPositiveCrawl)
-                    {
-                        row++;
-                    }
-                    else
-                    {
-                        row--;
-                    }
+                    //column crawl: we increase or decrease the row index. moving up or down
+                    row += isPositiveCrawl ? 1 : -1;
                 }
 
                 spiralList.Add(matrix[row][column]);
             }
 
-            i++;
+            batch++;
 
         }
 
