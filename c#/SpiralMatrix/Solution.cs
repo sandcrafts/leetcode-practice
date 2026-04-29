@@ -20,15 +20,15 @@ public class Solution
         // initialized with the first row. so that we can always leave the first item when crawling.
         List<int> spiralList = [.. matrix[0]];
 
-        int rowsRemaining = matrix.Length  - 1;
-        int columnsRemaining = matrix[0].Length  - 1;
-
         // list was initialized with the first row. We still start from the first row and go downwards
         int row = 0;
         
         // list was initialized with the first row. So,
-        // we start from the last column and we have the remainingColumnCount number of columns to go
-        int column = columnsRemaining;
+        // we start from the last column. index is 1 less than count.
+        int column = matrix[0].Length - 1;
+
+        int verticalStepsRemaining = matrix.Length  - 1;
+        int horizontalStepsRemaining = matrix[0].Length;
 
         int length;
         int batch = 1;
@@ -37,21 +37,22 @@ public class Solution
         {
             // if value of i is 0,1 positive; 2,3 negative; 4,5 positive and so on
             bool isPositiveCrawl = ((batch / 2) % 2 == 0);
-            // even i → row crawl (left/right)
-            // odd i → column crawl (up/down)
-            bool isRowCrawl = batch % 2 == 0;
+            // even i → horizontal crawl (left/right)
+            // odd i → vertical crawl (up/down)
+            bool isHorizontalCrawl = batch % 2 == 0;
 
-            if (isRowCrawl)
+
+            // since first row was already added, we start with vertical crawl
+            if (isHorizontalCrawl)
             {
-                length = columnsRemaining;
-                // if we move through horizontally in a row, there is 1 less vertical step we need to make next time
-                columnsRemaining--;
+                length = horizontalStepsRemaining;
+                verticalStepsRemaining--;
             }
             else
             {
-                length = rowsRemaining;
-                // if we move through vertically in a column, there is 1 less horizontal step we need to make next time
-                rowsRemaining--;
+                length = verticalStepsRemaining;
+                // after we do a vertical walk, there is 1 less horizontal step for future
+                horizontalStepsRemaining--;
             }
 
             if (length <= 0)
@@ -62,14 +63,14 @@ public class Solution
 
             for (int j = 0; j < length ; j++)
             {
-                if (isRowCrawl)
+                if (isHorizontalCrawl)
                 {
                     // we increase or decrease the column index. moving right or left
                     column += isPositiveCrawl ? 1 : -1;
                 }
                 else
                 {
-                    //column crawl: we increase or decrease the row index. moving up or down
+                    //vertical crawl: we increase or decrease the row index. moving up or down
                     row += isPositiveCrawl ? 1 : -1;
                 }
 
