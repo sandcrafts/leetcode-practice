@@ -34,8 +34,6 @@ public class Solution
         bool positive = true;
         int i = 1;
 
-
-
         while (true)
         {
             positive = (i / 2) % 2 == 0 ? true : false;
