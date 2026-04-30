@@ -39,7 +39,7 @@ public class Solution
 
     public void Solve(int[][] matrix)
     {
-        int buffer = 0;
+        int buffer;
         int length = matrix.Length;
         for (int i = 0; i < length; i++)
         {
@@ -55,7 +55,6 @@ public class Solution
         {
             int left = 0;
             int right = length - 1;
-            buffer = 0;
             while (left <= right)
             {
                 buffer = item[left];
