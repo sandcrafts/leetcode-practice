@@ -57,6 +57,9 @@
   <Folder Name="/c#/RotateImage/">
     <Project Path="c#/RotateImage/app.csproj" />
   </Folder>
+  <Folder Name="/c#/SetZeroes/">
+    <Project Path="c#/SetZeroes/app.csproj" />
+  </Folder>
   <Folder Name="/c#/SpiralMatrix/">
     <Project Path="c#/SpiralMatrix/app.csproj" />
   </Folder>
