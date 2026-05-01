@@ -62,7 +62,7 @@ public class Solution
         }
 
         for (int i = 0; i < matrix.Length; i++)
-
+        {
             for (int j = 0; j < matrix[0].Length; j++)
             {
                 if (rowIndex.Contains(i) || columnIndex.Contains(j))
@@ -70,6 +70,7 @@ public class Solution
                     matrix[i][j] = 0;
                 }
             }
+        }
     }
 }
 
