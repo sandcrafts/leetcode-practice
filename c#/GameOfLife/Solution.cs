@@ -16,20 +16,15 @@ Given the current state of the board, update the board to reflect its next state
 
 Note that you do not need to return anything.
 
- 
-
 Example 1:
-
 
 Input: board = [[0,1,0],[0,0,1],[1,1,1],[0,0,0]]
 Output: [[0,0,0],[1,0,1],[0,1,1],[0,1,0]]
 Example 2:
 
-
 Input: board = [[1,1],[1,0]]
 Output: [[1,1],[1,1]]
  
-
 Constraints:
 
 m == board.length
@@ -57,80 +52,106 @@ public class Solution
 
     public void Solve(int[][] board)
     {
-                int m = board.Length;
+        int m = board.Length;
         int n = board[0].Length;
         int[][] valueHolder = new int[m][];
-        for (int i = 0; i < m; i++) {
+        for (int i = 0; i < m; i++)
+        {
             valueHolder[i] = new int[n];
         }
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
                 int count = 0;
-                
-                if (j+1 < n) {
-                    if (board[i][j+1] == 1) {
+
+                if (j + 1 < n)
+                {
+                    if (board[i][j + 1] == 1)
+                    {
                         count++;
                     }
                 }
 
-                if (j-1 >= 0) {
-                    if (board[i][j-1] == 1) {
+                if (j - 1 >= 0)
+                {
+                    if (board[i][j - 1] == 1)
+                    {
                         count++;
                     }
                 }
 
-                if (i+1 < m) {
-                    if (board[i+1][j] == 1) {
+                if (i + 1 < m)
+                {
+                    if (board[i + 1][j] == 1)
+                    {
                         count++;
                     }
                 }
 
-                if (i-1 >= 0) {
-                    if (board[i-1][j] == 1) {
+                if (i - 1 >= 0)
+                {
+                    if (board[i - 1][j] == 1)
+                    {
                         count++;
                     }
                 }
 
-                if (j+1 < n && i+1 < m) {
-                    if (board[i+1][j+1] == 1) {
+                if (j + 1 < n && i + 1 < m)
+                {
+                    if (board[i + 1][j + 1] == 1)
+                    {
                         count++;
                     }
                 }
 
-                if (j+1 < n && i - 1 >= 0) {
-                    if (board[i-1][j+1] == 1) {
+                if (j + 1 < n && i - 1 >= 0)
+                {
+                    if (board[i - 1][j + 1] == 1)
+                    {
                         count++;
                     }
                 }
 
-                if (j-1 >= 0 && i + 1 < m) {
-                    if (board[i+1][j-1] == 1) {
+                if (j - 1 >= 0 && i + 1 < m)
+                {
+                    if (board[i + 1][j - 1] == 1)
+                    {
                         count++;
                     }
                 }
 
-                if (j-1 >= 0 && i - 1 >= 0) {
-                    if (board[i-1][j-1] == 1) {
+                if (j - 1 >= 0 && i - 1 >= 0)
+                {
+                    if (board[i - 1][j - 1] == 1)
+                    {
                         count++;
                     }
                 }
 
                 valueHolder[i][j] = count;
             }
-         }
+        }
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                if (board[i][j] == 1) {
-                    if (valueHolder[i][j] < 2) {
-                        board[i][j] = 0;
-                    } 
-                    else if (valueHolder[i][j] > 3) {
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                if (board[i][j] == 1)
+                {
+                    if (valueHolder[i][j] < 2)
+                    {
                         board[i][j] = 0;
                     }
-                } else if (board[i][j] == 0 && valueHolder[i][j] == 3) {
-                     board[i][j] = 1;
+                    else if (valueHolder[i][j] > 3)
+                    {
+                        board[i][j] = 0;
+                    }
+                }
+                else if (board[i][j] == 0 && valueHolder[i][j] == 3)
+                {
+                    board[i][j] = 1;
                 }
             }
         }
