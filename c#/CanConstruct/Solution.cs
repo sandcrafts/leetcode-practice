@@ -39,21 +39,20 @@ public class Solution
     {
         Dictionary<char, int> holder = new Dictionary<char, int>();
 
-        foreach (char mag in magazine)
-        {
-            holder[mag] = holder.GetValueOrDefault(mag, 0) + 1;
+        if (ransomNote.Length > magazine.Length) {
+            return false;
         }
 
-        foreach (char ran in ransomNote)
-        {
-            int some = holder.GetValueOrDefault(ran, 0);
+        foreach(char mag in magazine) {
+            holder[mag] = holder.GetValueOrDefault(mag , 0) + 1;
+        }
 
-            if (some < 1)
-            {
+        foreach(char ran in ransomNote) {
+            if (!holder.TryGetValue(ran, out int count) || count == 0) {
                 return false;
             }
 
-            holder[ran] = some - 1;
+            holder[ran] = count - 1;
         }
 
         return true;
