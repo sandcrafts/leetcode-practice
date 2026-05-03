@@ -9,7 +9,7 @@
         + "\n]"
     );
 
-    solution.Solve(Solution.Matrix);
+    solution.Solve(Solution.Board);
 
     Console.WriteLine($"Output: \n[\n " + 
         string.Join(",\n ", Solution.Board.Select(row => $"[{string.Join(",", row)}]"))
