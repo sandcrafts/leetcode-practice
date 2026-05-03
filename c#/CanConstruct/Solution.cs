@@ -34,9 +34,29 @@ public class Solution
     public static readonly string RansomNote = "aa";
     public static readonly string Magazine = "aab";
 
-    //Half Solution
-    public bool Solve(string ransomNote, string magazine) {
-        return magazine.Contains(ransomNote);
+    // 60? time 60% memory
+    public bool Solve(string ransomNote, string magazine)
+    {
+        Dictionary<char, int> holder = new Dictionary<char, int>();
+
+        foreach (char mag in magazine)
+        {
+            holder[mag] = holder.GetValueOrDefault(mag, 0) + 1;
+        }
+
+        foreach (char ran in ransomNote)
+        {
+            int some = holder.GetValueOrDefault(ran, 0);
+
+            if (some < 1)
+            {
+                return false;
+            }
+
+            holder[ran] = some - 1;
+        }
+
+        return true;
     }
 }
 
