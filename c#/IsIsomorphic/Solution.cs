@@ -53,7 +53,7 @@ public class Solution
     public static readonly string S = "paper";
     public static readonly string T = "title";
 
-    public bool IsIsomorphic(string s, string t) {
+    public bool Solve(string s, string t) {
         if (s.Length != t.Length) { 
             return false;
         }
