@@ -58,21 +58,21 @@ public class Solution
             return false;
         }
 
-        Dictionary<char, char> holder = new Dictionary<char, char>();
-        Dictionary<char, char> holder1 = new Dictionary<char, char>();
+        Dictionary<char, char> holderS = new Dictionary<char, char>();
+        Dictionary<char, char> holderT = new Dictionary<char, char>();
 
         for (int i = 0; i < s.Length; i++) {
-            if (holder.TryGetValue(s[i], out char alpha)) {
-                if (alpha != t[i]) {
+            if (holderS.TryGetValue(s[i], out char tMapped)) {
+                if (tMapped != t[i]) {
                     return false;
                 }
-            } else if (holder1.TryGetValue(t[i], out char beta)) {
-                if (beta != s[i]) {
+            } else if (holderT.TryGetValue(t[i], out char sMapped)) {
+                if (sMapped != s[i]) {
                     return false;
                 }
             } else {
-                holder[s[i]] = t[i];
-                holder1[t[i]] = s[i];
+                holderS[s[i]] = t[i];
+                holderT[t[i]] = s[i];
             }
         }
 
