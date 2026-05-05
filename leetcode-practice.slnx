@@ -93,6 +93,9 @@
   <Folder Name="/c#/ValidSudoku/">
     <Project Path="c#/ValidSudoku/app.csproj" />
   </Folder>
+  <Folder Name="/c#/WordPattern/">
+    <Project Path="c#/WordPattern/app.csproj" />
+  </Folder>
   <Folder Name="/c#/ZigzagConversion/">
     <Project Path="c#/ZigzagConversion/app.csproj" />
   </Folder>
