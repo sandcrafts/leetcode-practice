@@ -56,7 +56,7 @@ public class Solution
     public bool Solve(string pattern, string s) {
         Dictionary<char, string> holderPatToStr = new Dictionary<char, string>();
         Dictionary<string, char> holderStrToPat = new Dictionary<string, char>();
-        string[] str = s.Split(" ");
+        string[] str = s.Split(' ', StringSplitOptions.RemoveEmptyEntries);
         int pLen = pattern.Length;
         int sLen = str.Length;
 
@@ -65,15 +65,17 @@ public class Solution
         }
 
         for (int i = 0; i < pLen; i++) {
-            if (!holderPatToStr.TryGetValue(pattern[i], out string? val)) {
-                holderPatToStr[pattern[i]] = str[i];
-            } else if (val != str[i]) {
+            char p = pattern[i];
+            string w = str[i];
+            if (!holderPatToStr.TryGetValue(p, out string? val)) {
+                holderPatToStr[p] = w;
+            } else if (val != w) {
                 return false;
             }
             
-            if (!holderStrToPat.TryGetValue(str[i], out char alph)) {
-                holderStrToPat[str[i]] = pattern[i];
-            } else if (alph != pattern[i]) {
+            if (!holderStrToPat.TryGetValue(w, out char alph)) {
+                holderStrToPat[w] = p;
+            } else if (alph != p) {
                 return false;
             }
         }
