@@ -36,7 +36,7 @@ public class Solution
         foreach (char alpha in s)
         {
             int count = holder.GetValueOrDefault(alpha, 0);
-            holder[alpha] = count++;
+            holder[alpha] = count + 1;
         }
 
         foreach (char alpha in t)
@@ -46,7 +46,7 @@ public class Solution
                 return false;
             }
 
-            holder[alpha] = count--;
+            holder[alpha] = count - 1;
         }
 
         foreach (int value in holder.Values)
