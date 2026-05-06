@@ -31,6 +31,11 @@ public class Solution
 
     public bool Solve(string s, string t)
     {
+        if (s.Length != t.Length)
+        {
+            return false;
+        }
+
         Dictionary<char, int> holder = new Dictionary<char, int>();
 
         foreach (char alpha in s)
@@ -49,13 +54,15 @@ public class Solution
             holder[alpha] = count - 1;
         }
 
-        foreach (int value in holder.Values)
-        {
-            if (value != 0)
-            {
-                return false;
-            }
-        }
+        //dont need this final loop since the length is same
+        // also try getValue always succeeded and count never fell below 0
+        // foreach (int value in holder.Values)
+        // {
+        //     if (value != 0)
+        //     {
+        //         return false;
+        //     }
+        // }
 
         return true;
     }
