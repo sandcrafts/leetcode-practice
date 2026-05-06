@@ -87,6 +87,9 @@
   <Folder Name="/c#/TwoSumTwo/">
     <Project Path="c#/TwoSumTwo/app.csproj" />
   </Folder>
+  <Folder Name="/c#/ValidAnagram/">
+    <Project Path="c#/ValidAnagram/app.csproj" />
+  </Folder>
   <Folder Name="/c#/ValidPalindrome/">
     <Project Path="c#/ValidPalindrome/app.csproj" />
   </Folder>
