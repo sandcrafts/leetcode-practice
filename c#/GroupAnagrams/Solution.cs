@@ -70,9 +70,12 @@ public class Solution
 
             string sorted = new string(tmpStr);
 
-            if (holder.TryGetValue(sorted, out List<string> strList)) {
+            if (holder.TryGetValue(sorted, out List<string>? strList)) {
                 strList.Add(str);
                 holder[sorted] = strList;
+            } else
+            {
+                holder[sorted] = new List<string> {str};
             }
         }
 
