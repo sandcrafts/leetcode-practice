@@ -21,6 +21,9 @@
   <Folder Name="/c#/GasStation/">
     <Project Path="c#/GasStation/app.csproj" />
   </Folder>
+  <Folder Name="/c#/GroupAnagrams/">
+    <Project Path="c#/GroupAnagrams/app.csproj" />
+  </Folder>
   <Folder Name="/c#/IndexOfFirstOccurenceInAString/">
     <Project Path="c#/IndexOfFirstOccurenceInAString/app.csproj" />
   </Folder>
