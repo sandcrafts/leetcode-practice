@@ -55,7 +55,7 @@ public class Solution {
         return [];
     }
 
-    public int[] SolveII(int[] nums, int target) {
+    public int[] SolveI(int[] nums, int target) {
         Dictionary<int, int> holder = new Dictionary<int, int>();
 
         for (int i = 0; i < nums.Length; i++) {
@@ -74,7 +74,7 @@ public class Solution {
         return [];
     }
 
-    public int[] SolveI(int[] nums, int target) {
+    public int[] SolveII(int[] nums, int target) {
         for (int i = 0; i< nums.Length; i++)
         {
             for (int j = 1; j < nums.Length; j++)
