@@ -37,9 +37,23 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 */
 public class Solution {
     public static readonly int[] InputNumbers = new int[] {3,2,4};
-    public static readonly int Target = 6;
+    public static readonly int Target = 9;
 
-    public int[] Solve(int[] numbers, int target) {
+    public int[] Solve(int[] nums, int target) {
+        for (int i = 0; i< nums.Length; i++)
+        {
+            for (int j = 1; j < nums.Length; j++)
+            {
+                if (i == j){
+                    continue;
+                }
+                if (nums[i] + nums[j] == target) {
+                    return [i, j];
+                }
+            }
+        }
+
+        return [];
     }
 }
 
