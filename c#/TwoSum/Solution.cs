@@ -45,6 +45,22 @@ public class Solution {
         for (int i = 0; i < nums.Length; i++) {
             int diff = target - nums[i];
 
+            if(holder.TryGetValue(diff, out int index)) {
+                return [i, index];
+            }
+
+            holder[nums[i]] = i;
+        }
+
+        return [];
+    }
+
+    public int[] SolveII(int[] nums, int target) {
+        Dictionary<int, int> holder = new Dictionary<int, int>();
+
+        for (int i = 0; i < nums.Length; i++) {
+            int diff = target - nums[i];
+
             holder[diff] = i;
         }
 
