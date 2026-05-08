@@ -87,6 +87,9 @@
   <Folder Name="/c#/TrappingRainWater/">
     <Project Path="c#/TrappingRainWater/app.csproj" />
   </Folder>
+  <Folder Name="/c#/TwoSum/">
+    <Project Path="c#/TwoSum/app.csproj" />
+  </Folder>
   <Folder Name="/c#/TwoSumTwo/">
     <Project Path="c#/TwoSumTwo/app.csproj" />
   </Folder>
