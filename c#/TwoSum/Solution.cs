@@ -40,6 +40,25 @@ public class Solution {
     public static readonly int Target = 9;
 
     public int[] Solve(int[] nums, int target) {
+        Dictionary<int, int> holder = new Dictionary<int, int>();
+
+        for (int i = 0; i < nums.Length; i++) {
+            int diff = target - nums[i];
+
+            holder[diff] = i;
+        }
+
+        for (int i = 0; i < nums.Length; i++) {
+            if(holder.TryGetValue(nums[i], out int index) && i != index) {
+                return [i, index];
+            }
+            
+        }
+
+        return [];
+    }
+
+    public int[] SolveI(int[] nums, int target) {
         for (int i = 0; i< nums.Length; i++)
         {
             for (int j = 1; j < nums.Length; j++)
