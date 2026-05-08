@@ -37,7 +37,7 @@ Follow-up: Can you come up with an algorithm that is less than O(n2) time comple
 */
 public class Solution
 {
-    public static readonly int[] InputNumbers = new int[] { 3, 2, 4 };
+    public static readonly int[] InputNumbers = new int[] { 2, 7, 11, 15 };
     public static readonly int Target = 9;
 
     public int[] Solve(int[] nums, int target)
