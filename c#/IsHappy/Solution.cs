@@ -38,27 +38,32 @@ There will be at least one element in the data structure when getRandom is calle
 
 public class Solution
 {
-    public readonly int N = 19;
+    public static readonly int N = 19;
 
     public bool Solve(int n)
     {
         HashSet<int> squares = new HashSet<int>();
-        int sum = 0;
+        string str = n.ToString();
 
-        while (squares.Contains(sum)) {
-            squares.Add(sum);
-            sum = 0;
-
-            foreach (char digit in n.ToString()) {
-                sum += (int) digit ^ 2;
+        while (true) {
+            int sum = 0;
+            foreach (char character in str) {
+                int digit = character - '0';
+                sum += digit * digit;
             }
 
             if (sum == 1){
                 return true;
             }
-        }
 
-        return false;
+            if (squares.Contains(sum))
+            {
+                return false;
+            }
+
+            squares.Add(sum);
+            str = sum.ToString();
+        }
     }
 }
 

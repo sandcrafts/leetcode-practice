@@ -4,7 +4,7 @@
   {
     var solution = new Solution();
 
-    Console.WriteLine($"N: {solution.N}");
-    Console.WriteLine("Output: " + Solution.Solve(Solution.N));
+    Console.WriteLine($"N: {Solution.N}");
+    Console.WriteLine("Output: " + solution.Solve(Solution.N));
   }
 }
