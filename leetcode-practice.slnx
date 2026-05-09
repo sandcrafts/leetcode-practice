@@ -33,6 +33,9 @@
   <Folder Name="/c#/IntegerToRoman/">
     <Project Path="c#/IntegerToRoman/app.csproj" />
   </Folder>
+  <Folder Name="/c#/IsHappy/">
+    <Project Path="c#/IsHappy/app.csproj" />
+  </Folder>
   <Folder Name="/c#/IsIsomorphic/">
     <Project Path="c#/IsIsomorphic/app.csproj" />
   </Folder>
