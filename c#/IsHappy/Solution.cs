@@ -40,53 +40,25 @@ public class Solution
 {
     public readonly int N = 19;
 
-    public Solution()
+    public bool Solve(int n)
     {
-        list = new List<int>();
-        map = new Dictionary<int, int>();
-        rand = new Random();
-    }
+        HashSet<int> squares = new HashSet<int>();
+        int sum = 0;
 
-    public bool Insert(int val)
-    {
-        if (map.ContainsKey(val))
-        {
-            return false;
+        while (squares.Contains(sum)) {
+            squares.Add(sum);
+            sum = 0;
+
+            foreach (char digit in n.ToString()) {
+                sum += (int) digit ^ 2;
+            }
+
+            if (sum == 1){
+                return true;
+            }
         }
 
-        list.Add(val);
-        map[val] = list.Count - 1;
-
-        return true;
-    }
-
-    public bool Remove(int val)
-    {
-        if (!map.ContainsKey(val))
-        {
-            return false;
-        }
-
-        int index = map[val];
-        int lastIndex = list.Count - 1;
-        int lastValue = list[lastIndex];
-
-        list[index] = lastValue;
-
-        map[lastValue] = index;
-
-        list.RemoveAt(lastIndex);
-
-        map.Remove(val);
-
-        return true;
-    }
-
-    public int GetRandom()
-    {
-        int randomIndex = rand.Next(list.Count);
-
-        return list[randomIndex];
+        return false;
     }
 }
 
