@@ -1,39 +1,37 @@
 /*
 
-380. Insert Delete GetRandom O(1)
+202. Happy Number
 
-Implement the RandomizedSet class:
+Write an algorithm to determine if a number n is happy.
 
-RandomizedSet() Initializes the RandomizedSet object.
-bool insert(int val) Inserts an item val into the set if not present. Returns true if the item was not present, false otherwise.
-bool remove(int val) Removes an item val from the set if present. Returns true if the item was present, false otherwise.
-int getRandom() Returns a random element from the current set of elements (it's guaranteed that at least one element exists when this method is called). Each element must have the same probability of being returned.
-You must implement the functions of the class such that each function works in average O(1) time complexity.
+A happy number is a number defined by the following process:
+
+Starting with any positive integer, replace the number by the sum of the squares of its digits.
+Repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1.
+Those numbers for which this process ends in 1 are happy.
+Return true if n is a happy number, and false if not.
+
+ 
 
 Example 1:
 
-Input
-["RandomizedSet", "insert", "remove", "insert", "getRandom", "remove", "insert", "getRandom"]
-[[], [1], [2], [2], [], [1], [2], []]
-Output
-[null, true, false, true, 2, true, false, 2]
+Input: n = 19
+Output: true
+Explanation:
+12 + 92 = 82
+82 + 22 = 68
+62 + 82 = 100
+12 + 02 + 02 = 1
+Example 2:
 
-Explanation
-RandomizedSet randomizedSet = new RandomizedSet();
-randomizedSet.insert(1); // Inserts 1 to the set. Returns true as 1 was inserted successfully.
-randomizedSet.remove(2); // Returns false as 2 does not exist in the set.
-randomizedSet.insert(2); // Inserts 2 to the set, returns true. Set now contains [1,2].
-randomizedSet.getRandom(); // getRandom() should return either 1 or 2 randomly.
-randomizedSet.remove(1); // Removes 1 from the set, returns true. Set now contains [2].
-randomizedSet.insert(2); // 2 was already in the set, so return false.
-randomizedSet.getRandom(); // Since 2 is the only number in the set, getRandom() will always return 2.
+Input: n = 2
+Output: false
  
 
 Constraints:
 
--231 <= val <= 231 - 1
-At most 2 * 105 calls will be made to insert, remove, and getRandom.
-There will be at least one element in the data structure when getRandom is called.
+1 <= n <= 231 - 1
+
 */
 
 public class Solution
@@ -45,14 +43,17 @@ public class Solution
         HashSet<int> squares = new HashSet<int>();
         string str = n.ToString();
 
-        while (true) {
+        while (true)
+        {
             int sum = 0;
-            foreach (char character in str) {
+            foreach (char character in str)
+            {
                 int digit = character - '0';
                 sum += digit * digit;
             }
 
-            if (sum == 1){
+            if (sum == 1)
+            {
                 return true;
             }
 
@@ -64,6 +65,28 @@ public class Solution
             squares.Add(sum);
             str = sum.ToString();
         }
+    }
+
+    public bool SolveI(int n)
+    {
+        HashSet<int> squares = new HashSet<int>();
+
+        while (n != 1 && !squares.Contains(n))
+        {
+            squares.Add(n);
+            int sum = 0;
+
+            while (n > 0)
+            {
+                int digit = n % 10;
+                sum += digit * digit;
+                n /= 10;
+            }
+
+            n = sum;
+        }
+
+        return n == 1;
     }
 }
 
