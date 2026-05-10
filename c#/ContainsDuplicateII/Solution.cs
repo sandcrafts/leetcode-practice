@@ -41,19 +41,13 @@ public class Solution
         {
             if (holder.TryGetValue(nums[i], out int index))
             {
-                if (Math.Abs(index - i) <= k)
+                if (i - index <= k)
                 {
                     return true;
                 }
-                else
-                {
-                    holder[nums[i]] = i;
-                }
             }
-            else
-            {
-                holder[nums[i]] = i;
-            }
+
+            holder[nums[i]] = i;
         }
 
         return false;
