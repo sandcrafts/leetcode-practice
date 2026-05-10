@@ -51,6 +51,9 @@
   <Folder Name="/c#/LongestCommonPrefix/">
     <Project Path="c#/LongestCommonPrefix/app.csproj" />
   </Folder>
+  <Folder Name="/c#/LongestConsecutiveSequence/">
+    <Project Path="c#/LongestConsecutiveSequence/app.csproj" />
+  </Folder>
   <Folder Name="/c#/LongestSubstringWithoutRepeatingCharacter/">
     <Project Path="c#/LongestSubstringWithoutRepeatingCharacter/app.csproj" />
   </Folder>
