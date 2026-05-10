@@ -30,11 +30,33 @@ Constraints:
 
 public class Solution
 {
-    public static readonly int[] Input = new int[] { 1,2,3,1 };
+    public static readonly int[] Input = new int[] { 1, 2, 3, 1 };
     public static readonly int K = 3;
 
-    public bool Solve(int[] nums) {
+    public bool Solve(int[] nums)
+    {
+        Dictionary<int, int> holder = new Dictionary<int, int>();
 
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (holder.TryGetValue(nums[i], out int index))
+            {
+                if (Math.Abs(index - i) <= k)
+                {
+                    return true;
+                }
+                else
+                {
+                    holder[nums[i]] = i;
+                }
+            }
+            else
+            {
+                holder[nums[i]] = i;
+            }
+        }
+
+        return false;
     }
 }
 
