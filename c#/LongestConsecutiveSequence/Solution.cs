@@ -33,7 +33,29 @@ public class Solution
 {
     public static readonly int[] Input = new int[] { 0, 3, 7, 2, 5, 8, 4, 6, 0, 1 };
 
-    public int Solve(int[] nums)
+        public int Solve(int[] nums) {
+        HashSet<int> holder = new HashSet<int> (nums);
+        int longest = 0;
+
+        foreach(int num in holder) {
+            int sequence = 1;
+            int current = num;
+
+            if (holder.Contains(current - 1)) {
+                continue;
+            }
+
+            while (holder.Contains(current + 1)) {
+                sequence++;
+                current++;
+            }
+                longest = Math.Max(sequence, longest);
+        }
+
+        return longest;
+    }
+
+    public int SolveI(int[] nums)
     {
         Dictionary<int, int> holder = new Dictionary<int, int>();
         Array.Sort(nums);
