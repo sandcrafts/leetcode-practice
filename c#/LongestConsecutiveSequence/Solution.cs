@@ -31,11 +31,41 @@ Constraints:
 
 public class Solution
 {
-    public static readonly int[] Input = new int[] { 0,3,7,2,5,8,4,6,0,1 };
+    public static readonly int[] Input = new int[] { 0, 3, 7, 2, 5, 8, 4, 6, 0, 1 };
 
     public int Solve(int[] nums)
     {
+        Dictionary<int, int> holder = new Dictionary<int, int>();
+        Array.Sort(nums);
 
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (holder.TryGetValue(nums[i] - 1, out int count))
+            {
+                holder.Remove(nums[i] - 1);
+                holder[nums[i]] = count + 1;
+            }
+            else if (holder.TryGetValue(nums[i], out int counter))
+            {
+                continue;
+            }
+            else
+            {
+                holder[nums[i]] = 1;
+            }
+        }
+
+        int highest = 0;
+
+        foreach (int highestCount in holder.Values)
+        {
+            if (highestCount > highest)
+            {
+                highest = highestCount;
+            }
+        }
+
+        return highest;
     }
 }
 
