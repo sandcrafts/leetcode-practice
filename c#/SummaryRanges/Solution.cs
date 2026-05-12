@@ -49,7 +49,47 @@ public class Solution
 
     public IList<string> Solve(int[] nums)
     {
+                List<string> holder = new List<string>();
+        
+        int n = nums.Length;
+        if (n == 0){
+            return holder;
+        }
 
+        int startIndexNum = nums[0];
+
+        if (n == 1) {
+            holder.Add($"{startIndexNum}");
+            return holder;
+        }
+
+        int endIndexNum = 0;
+
+
+        for(int i = 1; i < n; i++) {
+            if (nums[i-1] == nums[i] - 1) {
+                if (i == n-1) {
+                    holder.Add($"{startIndexNum}->{nums[i]}");
+                }
+            } else {
+                endIndexNum = nums[i-1];
+
+                if (endIndexNum - startIndexNum != 0) {
+                    holder.Add($"{startIndexNum}->{endIndexNum}");
+                } else {
+                    holder.Add($"{endIndexNum}");
+                }
+                
+                startIndexNum = nums[i];
+
+                if (i == n-1) {
+                    holder.Add($"{startIndexNum}");
+                }
+                
+            }
+        }
+
+        return holder;
     }
 }
 
