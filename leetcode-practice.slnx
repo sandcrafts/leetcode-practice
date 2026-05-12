@@ -87,6 +87,9 @@
   <Folder Name="/c#/SubstringWithConcatenationOfAllWords/">
     <Project Path="c#/SubstringWithConcatenationOfAllWords/app.csproj" />
   </Folder>
+  <Folder Name="/c#/SummaryRanges/">
+    <Project Path="c#/SummaryRanges/app.csproj" />
+  </Folder>
   <Folder Name="/c#/ThreeSum/">
     <Project Path="c#/ThreeSum/app.csproj" />
   </Folder>
