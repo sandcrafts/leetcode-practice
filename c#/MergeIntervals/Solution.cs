@@ -39,18 +39,55 @@ public class Solution
 
     public int[][] Solve(int[][] intervals)
     {
+        if (intervals.Length <= 1)
+        {
+            return intervals;
+        }
+
+        List<int[]> holder = new List<int[]>();
+
+        Array.Sort(intervals, (a, b) => a[0].CompareTo(b[0]));
+        int start = intervals[0][0];
+        int end = intervals[0][1];
+
+        for (int i = 1; i < intervals.Length; i++)
+        {
+            if (intervals[i][0] <= end)
+            {
+                end = Math.Max(intervals[i][1], end);
+            }
+            else
+            {
+                holder.Add([start, end]);
+                start = intervals[i][0];
+                end = intervals[i][1];
+            }
+
+            if (i == intervals.Length - 1)
+            {
+                holder.Add([start, end]);
+            }
+        }
+
+        return holder.ToArray();
+    }
+
+    public int[][] SolveI(int[][] intervals)
+    {
         HashSet<int> seen = new HashSet<int>();
         List<int[]> holder = new List<int[]>();
 
-        Array.Sort(intervals, (a,b) => a[0].CompareTo(b[0]));
+        Array.Sort(intervals, (a, b) => a[0].CompareTo(b[0]));
 
-        for(int i=0; i < intervals.Length; i++)
+        for (int i = 0; i < intervals.Length; i++)
         {
-            if (seen.Contains(i)){
+            if (seen.Contains(i))
+            {
                 continue;
             }
 
-            if (i == intervals.Length - 1){
+            if (i == intervals.Length - 1)
+            {
                 holder.Add(intervals[i]);
                 break;
             }
@@ -60,17 +97,19 @@ public class Solution
             int start = intervals[i][0];
             int end = intervals[i][1];
 
-            for(int j = i+1; j < intervals.Length; j++) {
-                if (intervals[j][0] <= end) {
+            for (int j = i + 1; j < intervals.Length; j++)
+            {
+                if (intervals[j][0] <= end)
+                {
                     seen.Add(j);
                     end = Math.Max(intervals[j][1], end);
                 }
             }
 
-                holder.Add([start, end]);
-           
+            holder.Add([start, end]);
+
         }
-        
+
         return holder.ToArray();
     }
 }
