@@ -57,6 +57,9 @@
   <Folder Name="/c#/LongestSubstringWithoutRepeatingCharacter/">
     <Project Path="c#/LongestSubstringWithoutRepeatingCharacter/app.csproj" />
   </Folder>
+  <Folder Name="/c#/MergeIntervals/">
+    <Project Path="c#/MergeIntervals/app.csproj" />
+  </Folder>
   <Folder Name="/c#/MinimumSizeSubarraySum/">
     <Project Path="c#/MinimumSizeSubarraySum/app.csproj" />
   </Folder>
