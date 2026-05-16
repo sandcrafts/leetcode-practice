@@ -50,13 +50,33 @@ public class Solution
         8
     };
 
-    public int[][] Solve(int[][] intervals, int[] newInterval)
-    {
-        for (int i = 0; i < intervals.Length; i++)
-        {
-            
+    public int[][] Solve(int[][] intervals, int[] newInterval) {
+        List<int[]> holder = new List<int[]>();
+        int start = newInterval[0];
+        int end = newInterval[1];
+        bool finished = false;
+
+        for(int i = 0; i < intervals.Length; i++) {
+            if (intervals[i][1] < newInterval[0])
+            {
+                holder.Add([intervals[i][0], intervals[i][1]]);
+            } else if (intervals[i][0] > newInterval[1])
+            {
+                if (!finished) {
+                    holder.Add([start, end]);
+                    finished = true;
+                }
+                holder.Add([intervals[i][0], intervals[i][1]]);
+            } else {
+                start = Math.Min(start, intervals[i][0]);
+                end = Math.Max(end, intervals[i][1]);
+            }
         }
-        
-        return intervals;
+
+        if (!finished) {
+            holder.Add([start, end]);
+        }
+
+        return holder.ToArray();
     }
 }
