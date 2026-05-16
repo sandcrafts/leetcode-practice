@@ -52,6 +52,11 @@ public class Solution
 
     public int[][] Solve(int[][] intervals, int[] newInterval)
     {
+        for (int i = 0; i < intervals.Length; i++)
+        {
+            
+        }
+        
         return intervals;
     }
 }
