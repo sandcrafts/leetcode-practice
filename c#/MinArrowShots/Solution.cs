@@ -36,7 +36,7 @@ points[i].length == 2
 
 public class Solution
 {
-    public static readonly int[][] Intervals = new int[][]
+    public static readonly int[][] Points = new int[][]
     {
         new int[] {10,16},
         new int[] {2,8},
