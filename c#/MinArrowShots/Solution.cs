@@ -46,6 +46,19 @@ public class Solution
 
     public int Solve(int[][] points)
     {
-        return 1;
+        Array.Sort(points, (a,b) => a[0].CompareTo(b[0]));
+        int end = points[0][1];
+        int count = 1;
+
+        for (int i = 1; i < points.Length; i++) {
+            if (end >= points[i][0]) {
+                end = Math.Min(end, points[i][1]);
+            } else {
+                end = points[i][1];
+                count++;
+            }
+        }
+
+        return count;
     }
 }
