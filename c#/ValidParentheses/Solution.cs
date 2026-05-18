@@ -36,28 +36,33 @@ public class Solution
 
     public bool Solve(string s)
     {
-                Dictionary<char, char> mapping = new Dictionary<char, char>();
-        mapping['{'] = '}'; 
-        mapping['('] = ')'; 
+        Dictionary<char, char> mapping = new Dictionary<char, char>();
+        mapping['{'] = '}';
+        mapping['('] = ')';
         mapping['['] = ']';
-        
+
         Stack<char> holder = new Stack<char>();
         for (int i = 0; i < s.Length; i++)
         {
-            if (holder.Count == 0)
+            if (mapping.ContainsKey(s[i]))
             {
                 holder.Push(s[i]);
                 continue;
             }
 
-                char lastStackValue = holder.Peek();
-                if (mapping.TryGetValue(lastStackValue, out char x) && x == s[i])
-                {
-                    holder.Pop();
-                } 
-             else
+            if (holder.Count == 0)
             {
-                holder.Push(s[i]);
+                return false;
+            }
+
+            char lastStackValue = holder.Peek();
+            if (mapping.TryGetValue(lastStackValue, out char x) && x == s[i])
+            {
+                holder.Pop();
+            }
+            else
+            {
+                return false;
             }
         }
 
