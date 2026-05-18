@@ -33,10 +33,35 @@ public class Solution
 {
     public static readonly string S = "()[]{}";
 
-    
+
     public bool Solve(string s)
     {
+        Dictionary<char, char> mapping = new Dictionary<char, char>();
+        mapping['{'] = '}';
+        mapping['('] = ')';
+        mapping['['] = ']';
 
+        Stack<char> holder = new Stack<char>();
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (holder.Count == 0)
+            {
+                holder.Push(s[i]);
+                continue;
+            }
+
+            char lastStackValue = holder.Peek();
+            if (mapping.TryGetValue(lastStackValue, out char x) && x == s[i])
+            {
+                holder.Pop();
+            }
+            else
+            {
+                holder.Push(s[i]);
+            }
+        }
+
+        return holder.Count == 0;
     }
 }
 
