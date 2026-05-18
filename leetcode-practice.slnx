@@ -117,6 +117,9 @@
   <Folder Name="/c#/ValidPalindrome/">
     <Project Path="c#/ValidPalindrome/app.csproj" />
   </Folder>
+  <Folder Name="/c#/ValidParentheses/">
+    <Project Path="c#/ValidParentheses/app.csproj" />
+  </Folder>
   <Folder Name="/c#/ValidSudoku/">
     <Project Path="c#/ValidSudoku/app.csproj" />
   </Folder>
