@@ -80,11 +80,39 @@ path is a valid absolute Unix path.
 */
 public class Solution
 {
-    public static readonly string Path = "/.../a/../b/c/../d/./";
+    public static readonly string Path = "/home/";
 
     public string Solve(string path)
     {
+        string[] holder = path.Split('/');
+        Stack<string> folders = new Stack<string>();
+
+        foreach (string folder in holder)
+        {
+            if (folder == "." || folder == "")
+            {
+                continue;
+            }
+
+            if (folder == "..")
+            {
+                if (folders.Count > 0)
+                {
+                    folders.Pop();
+                    continue;
+                }
+                else
+                {
+                    continue;
+                }
+            }
+
+            folders.Push(folder);
+        }
+
+        string[] arrayFolders = folders.ToArray();
+        Array.Reverse(arrayFolders);
+        return "/" + String.Join('/', arrayFolders);
     }
 }
 
-    
