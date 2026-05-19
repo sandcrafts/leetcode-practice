@@ -99,12 +99,8 @@ public class Solution
                 if (folders.Count > 0)
                 {
                     folders.Pop();
-                    continue;
                 }
-                else
-                {
-                    continue;
-                }
+                continue;
             }
 
             folders.Push(folder);
@@ -112,7 +108,7 @@ public class Solution
 
         string[] arrayFolders = folders.ToArray();
         Array.Reverse(arrayFolders);
-        return "/" + String.Join('/', arrayFolders);
+        return "/" + string.Join('/', arrayFolders);
     }
 }
 
