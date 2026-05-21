@@ -44,6 +44,61 @@ At most 3 * 104 calls will be made to push, pop, top, and getMin.
 
 public class Solution
 {
+    private Stack<int> mainStack;
+    private Stack<int> minStack;
+
+    public MinStack() {
+        mainStack = new Stack<int>();
+        minStack = new Stack<int>();
+    }
     
+    public void Push(int val) {
+        mainStack.Push(val);
+
+        if (minStack.Count > 0) {
+            if(val <= minStack.Peek()) {
+                minStack.Push(val);
+            }
+        } else {
+            minStack.Push(val);
+        }
+    }
+    
+    public void Pop() {
+        if (mainStack.Count > 0){
+            int value = mainStack.Pop();
+            
+            if (value == minStack.Peek()) {
+                minStack.Pop();
+            }
+        }
+
+        
+    }
+    
+    public int Top() {
+        if (mainStack.Count > 0) {
+        return mainStack.Peek();
+        }
+
+        return int.MinValue;
+    }
+    
+    public int GetMin() {
+        if (minStack.Count > 0) {
+             return minStack.Peek();
+        }
+        
+        return int.MinValue;
+    }
 }
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.Push(val);
+ * obj.Pop();
+ * int param_3 = obj.Top();
+ * int param_4 = obj.GetMin();
+ */
 
