@@ -59,6 +59,6 @@
 
 Console.WriteLine($"[{string.Join(", ", ops)}]");
     Console.WriteLine($"Input: [{string.Join(", ", input.Select(arr => $"[{string.Join(", ", arr)}]"))}]");
-    Console.WriteLine("Output: " + $"[{string.Join(",", output)}]");
+    Console.WriteLine("Output: " + $"[{string.Join(",", output.Select(x => x?.ToString() ?? "null"))}]");
   }
 }
