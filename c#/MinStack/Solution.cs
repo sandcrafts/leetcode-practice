@@ -47,48 +47,59 @@ public class Solution
     private Stack<int> mainStack;
     private Stack<int> minStack;
 
-    public MinStack() {
+    public Solution()
+    {
         mainStack = new Stack<int>();
         minStack = new Stack<int>();
     }
-    
-    public void Push(int val) {
+
+    public void Push(int val)
+    {
         mainStack.Push(val);
 
-        if (minStack.Count > 0) {
-            if(val <= minStack.Peek()) {
+        if (minStack.Count > 0)
+        {
+            if (val <= minStack.Peek())
+            {
                 minStack.Push(val);
             }
-        } else {
+        }
+        else
+        {
             minStack.Push(val);
         }
     }
-    
-    public void Pop() {
-        if (mainStack.Count > 0){
+
+    public void Pop()
+    {
+        if (mainStack.Count > 0)
+        {
             int value = mainStack.Pop();
-            
-            if (value == minStack.Peek()) {
+
+            if (value == minStack.Peek())
+            {
                 minStack.Pop();
             }
         }
-
-        
     }
-    
-    public int Top() {
-        if (mainStack.Count > 0) {
-        return mainStack.Peek();
+
+    public int Top()
+    {
+        if (mainStack.Count > 0)
+        {
+            return mainStack.Peek();
         }
 
         return int.MinValue;
     }
-    
-    public int GetMin() {
-        if (minStack.Count > 0) {
-             return minStack.Peek();
+
+    public int GetMin()
+    {
+        if (minStack.Count > 0)
+        {
+            return minStack.Peek();
         }
-        
+
         return int.MinValue;
     }
 }
