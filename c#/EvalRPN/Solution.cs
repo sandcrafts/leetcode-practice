@@ -47,10 +47,32 @@ tokens[i] is either an operator: "+", "-", "*", or "/", or an integer in the ran
 
 public class Solution 
 {
-    public static readonly string[] Input = new int[] {"2","1","+","3","*"};
+    public static readonly string[] Input = new string[] {"2","1","+","3","*"};
     
-    public int Solve(string[] prices) {
+    public int Solve(string[] tokens) {
+        Stack<int> holder = new Stack<int>();
 
+        foreach(string token in tokens) {
+            if(token == "+" || token == "-" || token == "*" || token == "/") {
+                int b = holder.Pop();
+                int a = holder.Pop();
+
+                int result = token switch
+                {
+                    "+" => a + b,
+                    "-" => a - b,
+                    "*" => a * b,
+                    "/" => a / b,
+                    _ => 0
+                };
+
+                holder.Push(result);
+            } else {
+                holder.Push(int.Parse(token));
+            }
+        }
+
+        return holder.Pop();
     }
 }
 
