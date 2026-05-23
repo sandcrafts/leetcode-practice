@@ -3,7 +3,6 @@
 224. Basic Calculator
 
 
-
 */
 public class Solution
 {
@@ -11,7 +10,7 @@ public class Solution
 
     public int Solve(string s)
     {
-        
+        return 1;
     }
 }
 
