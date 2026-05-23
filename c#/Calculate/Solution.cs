@@ -6,8 +6,6 @@ Given a string s representing a valid expression, implement a basic calculator t
 
 Note: You are not allowed to use any built-in function which evaluates strings as mathematical expressions, such as eval().
 
- 
-
 Example 1:
 
 Input: s = "1 + 1"
@@ -39,7 +37,56 @@ public class Solution
 
     public int Solve(string s)
     {
-        return 1;
+        Stack<int> holder = new Stack<int>();
+
+        int num = 0;
+        int current = 0;
+        int sign = 1;
+
+        foreach (char alpha in s)
+        {
+            if (alpha == '+')
+            {
+                current += sign * num;
+                num = 0;
+                sign = 1;
+            }
+            else if (alpha == '-')
+            {
+                current += sign * num;
+                num = 0;
+                sign = -1;
+            }
+            else if ('(' == alpha)
+            {
+                current += sign * num;
+                num = 0;
+                holder.Push(current);
+                holder.Push(sign);
+                current = 0;
+                sign = 1;
+            }
+            else if (')' == alpha)
+            {
+                current += sign * num;
+                num = 0;
+                int previousSign = holder.Pop();
+                int previousNumber = holder.Pop();
+
+                current = previousNumber + previousSign * current;
+            }
+            else if (' ' == alpha)
+            {
+                continue;
+            }
+            else
+            {
+                num = num * 10 + (alpha - '0');
+            }
+        }
+        current += sign * num;
+
+        return current;
     }
 }
 
