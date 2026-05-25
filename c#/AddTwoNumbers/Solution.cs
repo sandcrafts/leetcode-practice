@@ -34,9 +34,33 @@ It is guaranteed that the list represents a number that does not have leading ze
 
 public class Solution
 {
-    public ListNode Solve(ListNode l1, ListNode l2)
-    {
+    public ListNode Solve(ListNode? l1, ListNode? l2) {
+        ListNode holder = new ListNode(0);
+        ListNode active = holder;
+        int carry = 0;
+        int sum;
+        int val;
 
+        while (l1 != null || l2 != null || carry != 0) {
+            int digit1 = l1 != null ? l1.val : 0;
+            int digit2 = l2 != null ? l2.val : 0;
+            sum = carry + digit1 + digit2;
+
+            val = sum % 10;
+            carry = sum / 10;
+
+            active.next = new ListNode(val);
+            active = active.next;
+
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+        }
+
+        return holder.next!;
     }
 }
 
