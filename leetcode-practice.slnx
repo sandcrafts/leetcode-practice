@@ -1,5 +1,8 @@
 <Solution>
   <Folder Name="/c#/" />
+  <Folder Name="/c#/AddTwoNumbers/">
+    <Project Path="c#/AddTwoNumbers/app.csproj" />
+  </Folder>
   <Folder Name="/c#/bestTimeToBuyAndSellStockII/">
     <Project Path="c#/bestTimeToBuyAndSellStockII/app.csproj" />
   </Folder>
