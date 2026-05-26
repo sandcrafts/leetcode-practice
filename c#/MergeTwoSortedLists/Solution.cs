@@ -35,8 +35,29 @@ Both list1 and list2 are sorted in non-decreasing order.
 
 public class Solution
 {
-    public ListNode Solve(ListNode? l1, ListNode? l2) {
+    public ListNode Solve(ListNode? list1, ListNode? list2)
+    {
+        ListNode dummyList = new ListNode(0);
+        ListNode newList = dummyList;
+        while (list1 != null || list2 != null)
+        {
+            int val1 = list1 != null ? list1.val : int.MaxValue;
+            int val2 = list2 != null ? list2.val : int.MaxValue;
+            if (val1 <= val2)
+            {
+                newList.next = list1;
+                newList = newList.next;
+                list1 = list1.next;
+            }
+            else if (val2 < val1)
+            {
+                newList.next = list2;
+                newList = newList.next;
+                list2 = list2.next;
+            }
+        }
 
+        return dummyList.next;
     }
 }
 
