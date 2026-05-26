@@ -75,6 +75,9 @@
   <Folder Name="/c#/MergeIntervals/">
     <Project Path="c#/MergeIntervals/app.csproj" />
   </Folder>
+  <Folder Name="/c#/MergeTwoSortedLists/">
+    <Project Path="c#/MergeTwoSortedLists/app.csproj" />
+  </Folder>
   <Folder Name="/c#/MinArrowShots/">
     <Project Path="c#/MinArrowShots/app.csproj" />
   </Folder>
