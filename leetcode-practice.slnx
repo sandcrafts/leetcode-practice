@@ -18,6 +18,9 @@
   <Folder Name="/c#/ContainerWithMostWater/">
     <Project Path="c#/ContainerWithMostWater/app.csproj" />
   </Folder>
+  <Folder Name="/c#/CopyListWithRandomPointer/">
+    <Project Path="c#/CopyListWithRandomPointer/app.csproj" />
+  </Folder>
   <Folder Name="/c#/EvalRPN/">
     <Project Path="c#/EvalRPN/app.csproj" />
   </Folder>
