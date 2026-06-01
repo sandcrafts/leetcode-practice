@@ -46,18 +46,18 @@ public class Solution
             if (val1 <= val2)
             {
                 newList.next = list1;
-                newList = newList.next;
-                list1 = list1.next;
+                newList = newList.next!;
+                list1 = list1!.next;
             }
-            else if (val2 < val1)
+            else
             {
                 newList.next = list2;
-                newList = newList.next;
-                list2 = list2.next;
+                newList = newList.next!;
+                list2 = list2!.next;
             }
         }
 
-        return dummyList.next;
+        return dummyList.next!;
     }
 }
 

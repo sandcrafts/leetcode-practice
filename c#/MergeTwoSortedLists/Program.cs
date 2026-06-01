@@ -12,7 +12,7 @@
     one.next = two;
 
     ListNode l2 = new ListNode(1);
-    ListNode three = new ListNode(2);
+    ListNode three = new ListNode(3);
     ListNode four = new ListNode(4);
 
     l2.next = three;
