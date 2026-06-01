@@ -45,7 +45,30 @@ Node.random is null or is pointing to some node in the linked list.
 
 public class Solution
 {
-    public Node Solve(Node head) {
+    public Node? Solve(Node head) {
+        if (head == null) { 
+            return null;
+        }
+        Node? current = head;
+        Dictionary<Node, Node> holder = new Dictionary<Node, Node>();
+        
+        while (current != null) {
+            holder[current] = new Node(current.val);
+            current = current.next;
+        }
+
+        current = head;
+        while (current != null) {
+            holder[current].next = current.next == null ? null : holder[current.next];
+            holder[current].random = current.random == null ? null : holder[current.random];
+            
+            current = current.next;
+        }
+
+        return holder[head];
+    }
+
+    public Node SolveI(Node head) {
         Node copyHead = new Node(0);
         Node? copyNode = copyHead;
         Node? current = head;

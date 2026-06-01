@@ -24,6 +24,6 @@
     Console.WriteLine($"Input: head = [[7,null],[13,0],[11,4],[10,2],[1,0]]");
     Node? output = solution.Solve(head);
 
-    Console.WriteLine($"Output: {string.Join(",", output.ToArray())}");
+    Console.WriteLine($"Output: {string.Join(",", output!.ToArray())}");
   }
 }
