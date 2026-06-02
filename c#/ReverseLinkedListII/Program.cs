@@ -14,10 +14,12 @@
     one.next = two;
     two.next = three;
     three.next = four;
+    int left = 2;
+    int right =4;
 
 
     Console.WriteLine($"Input: head = [1,2,3,4,5], left = 2, right = 4");
-    ListNode? output = solution.Solve(head);
+    ListNode? output = solution.Solve(head, left, right);
 
     Console.WriteLine($"Output: {string.Join(",", output!.ToArray())}");
   }

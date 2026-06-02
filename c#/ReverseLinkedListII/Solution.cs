@@ -28,8 +28,27 @@ Follow up: Could you do it in one pass?
 
 public class Solution
 {
-    public ListNode? Solve(ListNode head, int left, int right) {
+    public ListNode? Solve(ListNode head, int left, int right)
+    {
+        ListNode dummy = new ListNode(0, head);
+        ListNode prev = dummy;
 
+        for (int i = 1; i < left; i++)
+        {
+            prev = prev.next!;
+        }
+
+        ListNode start = prev.next!;
+
+        for (int i = 0; i < right - left; i++)
+        {
+            ListNode then = start.next!;
+            start.next = then.next;
+            then.next = prev.next;
+            prev.next = then;
+        }
+
+        return dummy.next;
     }
 }
 
