@@ -99,6 +99,9 @@
   <Folder Name="/c#/ReverseLinkedListII/">
     <Project Path="c#/ReverseLinkedListII/app.csproj" />
   </Folder>
+  <Folder Name="/c#/ReverseLinkedListInKGroup/">
+    <Project Path="c#/ReverseLinkedListInKGroup/app.csproj" />
+  </Folder>
   <Folder Name="/c#/ReverseWordsInAString/">
     <Project Path="c#/ReverseWordsInAString/app.csproj" />
   </Folder>
