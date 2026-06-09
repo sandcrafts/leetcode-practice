@@ -34,6 +34,33 @@ public class Solution
 {
     public ListNode? Solve(ListNode head, int k)
     {
+        ListNode dummy = new ListNode(0, head);
+        ListNode prev = dummy;
+        ListNode? start = head;
+
+        while (start != null) {
+            ListNode? checker = start;
+
+            for (int i = 0; i < k; i++) {
+                if (checker == null) {
+                    return dummy.next;
+                }
+
+                checker = checker.next;
+            }
+
+            for (int i = 0; i < k - 1; i++) {
+                ListNode then = start.next!;
+                start.next = then.next;
+                then.next = prev.next;
+                prev.next = then;
+            }
+
+            prev = start;
+            start = start.next;
+        }
+
+        return dummy.next;
     }
 }
 
