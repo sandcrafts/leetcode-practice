@@ -34,9 +34,28 @@ Follow up: Could you do this in one pass?
 
 public class Solution
 {
-    public ListNode? Solve(ListNode head, int k)
+    public ListNode? Solve(ListNode head, int n)
     {
-        return head;
+        ListNode dummy = new ListNode(0, head);
+        ListNode prev = dummy;
+        ListNode? counter = head;
+        int count = 0;
+
+        while (counter != null) {
+            counter = counter.next;
+            count++;
+        }
+
+        int target = count - n;
+
+        for (int i = 1; i <= target; i++)
+        {
+            prev = prev.next!;
+        }
+
+        prev.next = prev.next!.next;
+
+        return dummy.next;
     }
 }
 
