@@ -96,6 +96,9 @@
   <Folder Name="/c#/ProductOfArrayExceptSelf/">
     <Project Path="c#/ProductOfArrayExceptSelf/app.csproj" />
   </Folder>
+  <Folder Name="/c#/RemoveDuplicatesFromSortedListII/">
+    <Project Path="c#/RemoveDuplicatesFromSortedListII/app.csproj" />
+  </Folder>
   <Folder Name="/c#/RemoveNthNodeFromEndOfList/">
     <Project Path="c#/RemoveNthNodeFromEndOfList/app.csproj" />
   </Folder>
