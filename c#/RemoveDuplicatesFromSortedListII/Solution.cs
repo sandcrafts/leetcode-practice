@@ -30,7 +30,28 @@ public class Solution
 {
     public ListNode? Solve(ListNode head)
     {
-        return head;
+        ListNode holder = new ListNode (0, head);
+        ListNode prev = holder;
+        ListNode dummy = head;
+
+        while (dummy != null) {
+            bool isDuplicate = false;
+            
+            while (dummy.next != null && dummy.val == dummy.next.val) {
+                dummy = dummy.next;
+                isDuplicate = true;
+            }
+
+            if (isDuplicate) {
+                prev.next = dummy.next;
+            } else {
+                prev = dummy;
+            }
+            
+            dummy = dummy.next;
+        }
+
+        return holder.next;
     }
 }
 
