@@ -47,10 +47,10 @@ public class Solution
 
         for (int i = 1; i <= steps; i++)
         {
-            newTail = newTail.next;
+            newTail = newTail.next!;
         }
 
-        ListNode newHead = newTail.next;
+        ListNode newHead = newTail.next!;
         newTail.next = null;
         dummy.next = head;
 
