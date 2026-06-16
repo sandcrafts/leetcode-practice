@@ -51,6 +51,11 @@ public class Solution
             dummy = dummy.next;
             dummy = dummy.next;
 dummy = dummy.next;
+
+            
+            dummy = dummy.next;
+            dummy = dummy.next;
+dummy = dummy.next;
         }
 
         return holder.next;
