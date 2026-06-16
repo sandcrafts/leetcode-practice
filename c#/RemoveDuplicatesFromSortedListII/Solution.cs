@@ -54,6 +54,7 @@ dummy = dummy.next;
         }
 
         return holder.next;
+        return holder.next;
     }
 }
 
